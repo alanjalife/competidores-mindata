@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CompetidoresMap España — Competidores de Mindata</title>
+<title>CompeMap España — Competidores de Mindata (Staffing IT + Hospitality Tech)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -30,11 +30,15 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1
 .hero h1{font-size:clamp(28px,4vw,46px);font-weight:800;letter-spacing:-1px;line-height:1.05}
 .hero h1 em{font-style:normal;color:var(--red)}
 .hero p{color:var(--mute);margin-top:10px;max-width:760px;font-size:16px}
-.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:26px}
+.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:26px}
 .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
 .stat .n{font-family:'Syne';font-weight:800;font-size:30px}
 .stat .l{font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.6px}
 .stat.hi .n{color:var(--red)}
+.units{display:flex;gap:0;margin-top:22px;border:1px solid var(--ink);border-radius:12px;overflow:hidden;width:fit-content;background:var(--card)}
+.units button{border:0;background:transparent;padding:10px 18px;font-family:'Syne';font-weight:700;font-size:14px;cursor:pointer;color:var(--ink)}
+.units button.on{background:var(--red);color:#fff}
+.units button span{font-family:'DM Sans';font-weight:400;font-size:12px;opacity:.75;margin-left:4px}
 .cats{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 4px}
 .chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 14px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:.15s;font-family:inherit;color:var(--ink)}
 .chip:hover{border-color:var(--ink)}
@@ -70,6 +74,12 @@ select.sort{padding:8px 10px;border:1px solid var(--line);border-radius:9px;font
 .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
 .card h4{font-family:'Syne';font-size:17px;font-weight:700;line-height:1.15}
 .card .cat{font-size:11px;color:var(--cc);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-top:3px}
+.bl{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap;background:#1A1A1A;color:#fff;display:inline-flex;gap:4px;align-items:center}
+.bl.ok{background:#E3F4EC;color:#13693F}
+.card.isbl{opacity:.62;background:repeating-linear-gradient(135deg,#fff,#fff 10px,#F7F5F2 10px,#F7F5F2 20px)}
+.card.isbl:hover{opacity:1}
+.blnote{font-size:12px;background:#1A1A1A;color:#fff;border-radius:8px;padding:7px 10px}
+.blnote.ok{background:#E3F4EC;color:#13693F}
 .thr{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
 .thr.Alta{background:var(--red);color:#fff}.thr.Media{background:#F5DFC0;color:#7A4E00}.thr.Baja{background:#E8E6E2;color:#555}
 .meta{display:flex;gap:12px;flex-wrap:wrap;font-size:12.5px;color:var(--mute)}
@@ -85,13 +95,14 @@ table{width:100%;border-collapse:collapse;background:var(--card);border:1px soli
 th{background:var(--ink);color:#fff;text-align:left;padding:10px 12px;font-weight:700;font-size:12px;cursor:pointer;white-space:nowrap}
 td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
 tr:hover td{background:#FBFAF8}
+tr.isbl td{background:#F1EFEB;color:#777}
 td .pills{max-width:260px}
 .empty{padding:60px;text-align:center;color:var(--mute);background:var(--card);border:1px dashed var(--line);border-radius:16px}
 .insight{background:var(--ink);color:#fff;border-radius:16px;padding:22px;margin-bottom:18px;display:grid;grid-template-columns:1.1fr 1fr;gap:24px}
 .insight h3{font-size:17px;margin-bottom:8px}
 .insight p{font-size:13.5px;opacity:.85}
 .bars{display:flex;flex-direction:column;gap:7px}
-.brow{display:grid;grid-template-columns:150px 1fr 28px;align-items:center;gap:10px;font-size:12px}
+.brow{display:grid;grid-template-columns:210px 1fr 28px;align-items:center;gap:10px;font-size:12px}
 .btrack{height:10px;background:#333;border-radius:5px;overflow:hidden}
 .bfill{height:100%;border-radius:5px}
 footer{border-top:1px solid var(--line);padding:22px 0;font-size:12.5px;color:var(--mute)}
@@ -102,20 +113,22 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 </head>
 <body>
 <header><div class="wrap">
-  <div class="brand"><div class="logo">min<span>data</span></div><div class="sep"></div><div class="prod">CompetidoresMap España</div></div>
+  <div class="brand"><div class="logo">min<span>data</span></div><div class="sep"></div><div class="prod">CompeMap España</div></div>
   <div class="tags"><div class="tag">Inteligencia competitiva</div><div class="tag">Staffing IT · <b>2026</b></div></div>
 </div></header>
 
 <div class="wrap">
   <section class="hero">
     <h1>Mapa de <em>competidores</em> de Mindata en España</h1>
-    <p id="sub">Consultoras de selección, staffing IT, outsourcing y plataformas que compiten por los mismos clientes y perfiles. Filtrá por categoría, servicio, especialidad, ciudad y nivel de amenaza.</p>
+    <p id="sub">Dos unidades de negocio en un mismo mapa: <b>Staffing IT</b> (selección, outsourcing y plataformas de talento) y <b>Hospitality Tech</b> (WiFi, GPON, IPTV y redes para hoteles). Filtrá por unidad, categoría, servicio, segmento, ciudad y nivel de amenaza.</p>
+    <div class="units" id="units"></div>
     <div class="stats">
       <div class="stat hi"><div class="n" id="sTotal">—</div><div class="l">Competidores</div></div>
       <div class="stat"><div class="n" id="sAlta">—</div><div class="l">Amenaza alta</div></div>
+      <div class="stat"><div class="n" id="sBl">—</div><div class="l">🚫 No atacables</div></div>
       <div class="stat"><div class="n" id="sCats">—</div><div class="l">Categorías</div></div>
       <div class="stat"><div class="n" id="sCities">—</div><div class="l">Ciudades sede</div></div>
-      <div class="stat"><div class="n" id="sLatam">—</div><div class="l">Con talento LatAm</div></div>
+      <div class="stat"><div class="n" id="sLatam">—</div><div class="l" id="sLatamL">Con talento LatAm</div></div>
     </div>
     <div class="cats" id="cats"></div>
   </section>
@@ -129,8 +142,11 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
       <div class="f"><label class="t">Ciudad sede</label><select id="fCity"><option value="">Todas las ciudades</option></select></div>
       <div class="f"><label class="t">Tamaño</label><select id="fSize"><option value="">Todos los tamaños</option><option>Grande (+5.000)</option><option>Mediana (200–5.000)</option><option>Pequeña (&lt;200)</option></select></div>
       <div class="f"><label class="t">Servicio</label><div class="opts" id="fSrv"></div><div class="hint">Podés elegir varios</div></div>
-      <div class="f"><label class="t">Especialidad</label><div class="opts" id="fEsp"></div><div class="hint">Podés elegir varias</div></div>
-      <div class="f"><label class="opt" style="display:inline-flex;gap:6px;align-items:center"><input type="checkbox" id="fLatam"> Solo con talento LatAm / nearshore</label></div>
+      <div class="f"><label class="t" id="lEsp">Especialidad</label><div class="opts" id="fEsp"></div><div class="hint">Podés elegir varias</div></div>
+      <div class="f"><label class="opt" style="display:inline-flex;gap:6px;align-items:center"><input type="checkbox" id="fLatam"> Solo con presencia / talento LatAm</label></div>
+      <div class="f"><label class="t">Clientes no atacables</label>
+        <select id="fBl"><option value="">Mostrar todas</option><option value="hide">Ocultar 🚫 no atacables</option><option value="only">Solo 🚫 no atacables</option><option value="ok">Solo ✅ atacables de momento</option></select>
+        <div class="hint">Según el listado de clientes no atacables (Juan de Castro)</div></div>
       <button class="btn ghost" id="reset">Limpiar filtros</button>
     </aside>
 
@@ -138,7 +154,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
       <div class="insight">
         <div>
           <h3 class="syne">Lectura rápida</h3>
-          <p>La amenaza más directa la ponen las <b>boutiques de selección IT</b> y los <b>proveedores de staffing / body shopping</b> de capital español, que venden lo mismo que Mindata: perfiles validados en semanas. Las multinacionales ganan en acuerdos marco con el IBEX. El nearshore LatAm y los marketplaces remotos presionan el precio, y ahí la ventaja de Mindata es el talento de Argentina y México con validación técnica propia.</p>
+          <p id="insTxt">La amenaza más directa la ponen las <b>boutiques de selección IT</b> y los <b>proveedores de staffing / body shopping</b> de capital español, que venden lo mismo que Mindata: perfiles validados en semanas. Las multinacionales ganan en acuerdos marco con el IBEX. El nearshore LatAm y los marketplaces remotos presionan el precio, y ahí la ventaja de Mindata es el talento de Argentina y México con validación técnica propia.</p>
         </div>
         <div class="bars" id="bars"></div>
       </div>
@@ -161,7 +177,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   </div>
 </div>
 
-<footer><div class="wrap"><div>CompetidoresMap España · Inteligencia competitiva · Una herramienta de Mindata · 2026</div><div id="fTot"></div></div></footer>
+<footer><div class="wrap"><div>CompeMap España · Inteligencia competitiva · Una herramienta de Mindata · 2026</div><div id="fTot"></div></div></footer>
 
 <script>
 /* ================= DATOS =================
@@ -175,131 +191,223 @@ const CATS={
  "Staffing / Body shopping IT":"--c4",
  "Consultora IT con outsourcing":"--c6",
  "Nearshore LatAm":"--c3",
- "Plataforma / Marketplace":"--c5"
+ "Plataforma / Marketplace":"--c5",
+ "Hospitality · Redes, WiFi y GPON":"--c1",
+ "Hospitality · IPTV y entretenimiento":"--c2",
+ "Hospitality · Operadores e integradores":"--c4"
+};
+const UNITS={"Staffing IT":"Selección, staffing, outsourcing","Hospitality Tech":"WiFi, GPON, IPTV, redes para hoteles"};
+const INS={
+ "":"El mapa cubre las dos líneas de Mindata. En Staffing IT, la presión directa viene de las boutiques de selección y del body shopping español. En Hospitality Tech, viene de los especialistas en redes hoteleras (Cibersuite, Hotelinking, Televés) y de las plataformas de IPTV (Zafiro).",
+ "Staffing IT":"La amenaza más directa la ponen las <b>boutiques de selección IT</b> y los <b>proveedores de staffing / body shopping</b> de capital español, que venden lo mismo que Mindata: perfiles validados en semanas. Las multinacionales ganan en acuerdos marco con el IBEX. El nearshore LatAm y los marketplaces remotos presionan el precio, y ahí la ventaja de Mindata es el talento de Argentina y México con validación técnica propia.",
+ "Hospitality Tech":"Los rivales más directos son los <b>especialistas españoles en redes hoteleras</b> que, como Mindata, venden proyecto llave en mano + soporte 24/7 (Cibersuite, Hotelinking, Cerium, Televés con GPON homologado por Marriott). En IPTV, <b>Zafiro</b> ya trabaja con Meliá, Paradores, IHG o Hilton. Los operadores (Telefónica, Eurona) compiten en conectividad, y las plataformas globales (GuestTek, Enseo, Wifirst) en las grandes cadenas internacionales. El diferencial de Mindata es sumar software, IA, QA y outsourcing a la infraestructura de red."
 };
 const SIZE={G:"Grande (+5.000)",M:"Mediana (200–5.000)",P:"Pequeña (<200)"};
 const D=[
 // ---------- Multinacionales de RRHH con división IT
-{n:"Experis (ManpowerGroup)",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"G",s:["Selección","Staff augmentation","Outsourcing"],e:["Desarrollo","Cloud","Ciberseguridad","Data"],a:"Alta",w:"experis.es",d:"Referente en selección IT y servicios gestionados. Fuerte en grandes cuentas y acuerdos marco."},
-{n:"Randstad Digital",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"G",s:["Selección","Staff augmentation","Outsourcing"],e:["Desarrollo","Cloud","Data","QA"],a:"Alta",w:"randstad.es",d:"Antigua Randstad Technologies, rebautizada para pelear servicios tecnológicos."},
-{n:"Adecco / Spring Professional",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"G",s:["Selección","Staff augmentation","Outsourcing","Formación"],e:["Desarrollo","Soporte / Help Desk","SAP / ERP","Ciberseguridad"],a:"Media",w:"adecco.es",d:"Casi 30 años en RR.HH. IT. Mezcla selección con reskilling y full outsourcing."},
-{n:"Akkodis (Adecco Group)",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"G",s:["Staff augmentation","Outsourcing","Selección"],e:["Desarrollo","Ingeniería","Cloud","Data"],a:"Media",w:"akkodis.com",d:"Consultoría tech y de ingeniería del grupo Adecco. Combina talento y proyecto."},
-{n:"Hays España",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"G",s:["Selección","Staff augmentation"],e:["Desarrollo","Data","Ciberseguridad","Cloud"],a:"Alta",w:"hays.es",d:"Muy activa en contractors IT y perfiles mid/senior."},
-{n:"Michael Page Technology",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"G",s:["Selección","Headhunting directivo"],e:["Desarrollo","Data","Ciberseguridad","Management IT"],a:"Media",w:"michaelpage.es",d:"Posiciones mid-senior y de management IT. Publica guías salariales tech."},
-{n:"Page Personnel IT",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"G",s:["Selección","Staff augmentation"],e:["Desarrollo","Soporte / Help Desk","Data"],a:"Media",w:"pagepersonnel.es",d:"Mandos intermedios y técnicos. Ofrece temporal e interim."},
-{n:"Robert Walters",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"M",s:["Selección","Staff augmentation"],e:["Desarrollo","Data","Management IT"],a:"Media",w:"robertwalters.es",d:"Selección especializada con práctica tecnológica en Madrid y Barcelona."},
-{n:"Manpower España",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"G",s:["Selección","Staff augmentation","Outsourcing"],e:["Soporte / Help Desk","Desarrollo"],a:"Baja",w:"manpower.es",d:"Volumen generalista. En IT entra a través de Experis."},
-{n:"Synergie España",c:"Multinacional RRHH",o:"Multinacional",ci:"Barcelona",t:"M",s:["Selección","Staff augmentation"],e:["Soporte / Help Desk","Ingeniería"],a:"Baja",w:"synergie.es",d:"ETT generalista con línea de perfiles técnicos."},
-{n:"Antal International",c:"Multinacional RRHH",o:"Multinacional",ci:"Barcelona",t:"P",s:["Selección","Headhunting directivo"],e:["Desarrollo","Data","Ciberseguridad","Cloud"],a:"Media",w:"antal.com",d:"Red global de franquicias. En Barcelona recluta software, data, ciberseguridad e infraestructura."},
-{n:"Morgan Philips",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"P",s:["Selección","Headhunting directivo"],e:["Management IT","Desarrollo","Data"],a:"Baja",w:"morganphilips.com",d:"Equipo especializado en Technology & Digital, más orientado a senior."},
-{n:"Oliver James",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"P",s:["Selección","Staff augmentation"],e:["Desarrollo","Data","Cloud"],a:"Media",w:"oliverjames.com",d:"Contract staffing y permanente en España."},
-{n:"Kitalent",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"P",s:["Headhunting directivo"],e:["Management IT","IA","Ciberseguridad","Cloud"],a:"Baja",w:"kitalent.com",d:"Executive search en IA, cloud y ciberseguridad para España y México."},
+{u:"Staffing IT",n:"Experis (ManpowerGroup)",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"G",s:["Selección","Staff augmentation","Outsourcing"],e:["Desarrollo","Cloud","Ciberseguridad","Data"],a:"Alta",w:"experis.es",d:"Referente en selección IT y servicios gestionados. Fuerte en grandes cuentas y acuerdos marco."},
+{u:"Staffing IT",n:"Randstad Digital",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"G",s:["Selección","Staff augmentation","Outsourcing"],e:["Desarrollo","Cloud","Data","QA"],a:"Alta",w:"randstad.es",d:"Antigua Randstad Technologies, rebautizada para pelear servicios tecnológicos."},
+{u:"Staffing IT",n:"Adecco / Spring Professional",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"G",s:["Selección","Staff augmentation","Outsourcing","Formación"],e:["Desarrollo","Soporte / Help Desk","SAP / ERP","Ciberseguridad"],a:"Media",w:"adecco.es",d:"Casi 30 años en RR.HH. IT. Mezcla selección con reskilling y full outsourcing."},
+{u:"Staffing IT",n:"Akkodis (Adecco Group)",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"G",s:["Staff augmentation","Outsourcing","Selección"],e:["Desarrollo","Ingeniería","Cloud","Data"],a:"Media",w:"akkodis.com",d:"Consultoría tech y de ingeniería del grupo Adecco. Combina talento y proyecto."},
+{u:"Staffing IT",n:"Hays España",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"G",s:["Selección","Staff augmentation"],e:["Desarrollo","Data","Ciberseguridad","Cloud"],a:"Alta",w:"hays.es",d:"Muy activa en contractors IT y perfiles mid/senior."},
+{u:"Staffing IT",n:"Michael Page Technology",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"G",s:["Selección","Headhunting directivo"],e:["Desarrollo","Data","Ciberseguridad","Management IT"],a:"Media",w:"michaelpage.es",d:"Posiciones mid-senior y de management IT. Publica guías salariales tech."},
+{u:"Staffing IT",n:"Page Personnel IT",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"G",s:["Selección","Staff augmentation"],e:["Desarrollo","Soporte / Help Desk","Data"],a:"Media",w:"pagepersonnel.es",d:"Mandos intermedios y técnicos. Ofrece temporal e interim."},
+{u:"Staffing IT",n:"Robert Walters",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"M",s:["Selección","Staff augmentation"],e:["Desarrollo","Data","Management IT"],a:"Media",w:"robertwalters.es",d:"Selección especializada con práctica tecnológica en Madrid y Barcelona."},
+{u:"Staffing IT",n:"Manpower España",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"G",s:["Selección","Staff augmentation","Outsourcing"],e:["Soporte / Help Desk","Desarrollo"],a:"Baja",w:"manpower.es",d:"Volumen generalista. En IT entra a través de Experis."},
+{u:"Staffing IT",n:"Synergie España",c:"Multinacional RRHH",o:"Multinacional",ci:"Barcelona",t:"M",s:["Selección","Staff augmentation"],e:["Soporte / Help Desk","Ingeniería"],a:"Baja",w:"synergie.es",d:"ETT generalista con línea de perfiles técnicos."},
+{u:"Staffing IT",n:"Antal International",c:"Multinacional RRHH",o:"Multinacional",ci:"Barcelona",t:"P",s:["Selección","Headhunting directivo"],e:["Desarrollo","Data","Ciberseguridad","Cloud"],a:"Media",w:"antal.com",d:"Red global de franquicias. En Barcelona recluta software, data, ciberseguridad e infraestructura."},
+{u:"Staffing IT",n:"Morgan Philips",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"P",s:["Selección","Headhunting directivo"],e:["Management IT","Desarrollo","Data"],a:"Baja",w:"morganphilips.com",d:"Equipo especializado en Technology & Digital, más orientado a senior."},
+{u:"Staffing IT",n:"Oliver James",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"P",s:["Selección","Staff augmentation"],e:["Desarrollo","Data","Cloud"],a:"Media",w:"oliverjames.com",d:"Contract staffing y permanente en España."},
+{u:"Staffing IT",n:"Kitalent",c:"Multinacional RRHH",o:"Multinacional",ci:"Madrid",t:"P",s:["Headhunting directivo"],e:["Management IT","IA","Ciberseguridad","Cloud"],a:"Baja",w:"kitalent.com",d:"Executive search en IA, cloud y ciberseguridad para España y México."},
 
 // ---------- Boutiques de selección IT
-{n:"iTalenters",c:"Boutique selección IT",o:"Español",ci:"Barcelona",t:"P",s:["Selección","Headhunting directivo"],e:["Desarrollo","Data","IA","Cloud"],a:"Alta",w:"italenters.com",d:"Selección IT asistida por IA para clientes internacionales. Comunica un 87 % de contratación sobre los candidatos presentados."},
-{n:"TalentHackers",c:"Boutique selección IT",o:"Español",ci:"Madrid",t:"P",s:["Selección","Headhunting directivo"],e:["Desarrollo","Data","IA","Producto"],a:"Alta",w:"talenthackers.net",d:"Agencia IT con un Observatorio de Talento Tecnológico propio. Hace mucho marketing de contenidos."},
-{n:"Selecta Digital",c:"Boutique selección IT",o:"Español",ci:"Madrid",t:"P",s:["Selección"],e:["Desarrollo","Data","Producto","Marketing digital"],a:"Alta",w:"selectadigital.es",d:"Consultora de selección TIC lanzada en 2020 con unos 14 consultores."},
-{n:"Manfred (Sngular)",c:"Boutique selección IT",o:"Español",ci:"Madrid",t:"P",s:["Selección","Comunidad / Marca empleadora"],e:["Desarrollo","Data","Producto"],a:"Alta",w:"getmanfred.com",d:"Agencia hecha por programadores. Muy conocida en la comunidad dev y publica el Tech Career Report."},
-{n:"Kulturo",c:"Boutique selección IT",o:"Español",ci:"Barcelona",t:"P",s:["Selección","Headhunting directivo"],e:["Desarrollo","Data","Blockchain"],a:"Media",w:"kulturo.com",d:"Boutique de headhunting técnico para startups y scaleups, con reseñas 5,0 en Clutch."},
-{n:"Bandit",c:"Boutique selección IT",o:"Español",ci:"Barcelona",t:"P",s:["Selección"],e:["Desarrollo","Producto","Data"],a:"Media",w:"banditalent.com",d:"‘The most wanted talent’: equipos completos para startups y scaleups."},
-{n:"Talent Point",c:"Boutique selección IT",o:"Español",ci:"Barcelona",t:"P",s:["Selección"],e:["Desarrollo","Producto"],a:"Media",w:"",d:"Boutique tech del ecosistema startup de Barcelona. Verificar la web."},
+{u:"Staffing IT",n:"iTalenters",c:"Boutique selección IT",o:"Español",ci:"Barcelona",t:"P",s:["Selección","Headhunting directivo"],e:["Desarrollo","Data","IA","Cloud"],a:"Alta",w:"italenters.com",d:"Selección IT asistida por IA para clientes internacionales. Comunica un 87 % de contratación sobre los candidatos presentados."},
+{u:"Staffing IT",n:"TalentHackers",c:"Boutique selección IT",o:"Español",ci:"Madrid",t:"P",s:["Selección","Headhunting directivo"],e:["Desarrollo","Data","IA","Producto"],a:"Alta",w:"talenthackers.net",d:"Agencia IT con un Observatorio de Talento Tecnológico propio. Hace mucho marketing de contenidos."},
+{u:"Staffing IT",n:"Selecta Digital",c:"Boutique selección IT",o:"Español",ci:"Madrid",t:"P",s:["Selección"],e:["Desarrollo","Data","Producto","Marketing digital"],a:"Alta",w:"selectadigital.es",d:"Consultora de selección TIC lanzada en 2020 con unos 14 consultores."},
+{u:"Staffing IT",n:"Manfred (Sngular)",c:"Boutique selección IT",o:"Español",ci:"Madrid",t:"P",s:["Selección","Comunidad / Marca empleadora"],e:["Desarrollo","Data","Producto"],a:"Alta",w:"getmanfred.com",d:"Agencia hecha por programadores. Muy conocida en la comunidad dev y publica el Tech Career Report."},
+{u:"Staffing IT",n:"Kulturo",c:"Boutique selección IT",o:"Español",ci:"Barcelona",t:"P",s:["Selección","Headhunting directivo"],e:["Desarrollo","Data","Blockchain"],a:"Media",w:"kulturo.com",d:"Boutique de headhunting técnico para startups y scaleups, con reseñas 5,0 en Clutch."},
+{u:"Staffing IT",n:"Bandit",c:"Boutique selección IT",o:"Español",ci:"Barcelona",t:"P",s:["Selección"],e:["Desarrollo","Producto","Data"],a:"Media",w:"banditalent.com",d:"‘The most wanted talent’: equipos completos para startups y scaleups."},
+{u:"Staffing IT",n:"Talent Point",c:"Boutique selección IT",o:"Español",ci:"Barcelona",t:"P",s:["Selección"],e:["Desarrollo","Producto"],a:"Media",w:"",d:"Boutique tech del ecosistema startup de Barcelona. Verificar la web."},
 
 // ---------- Staffing / body shopping IT de capital español
-{n:"Krell Consulting",c:"Staffing / Body shopping IT",o:"Español",ci:"Madrid",t:"M",s:["Staff augmentation","Outsourcing","Selección"],e:["Desarrollo","SAP / ERP","Cloud","QA"],a:"Alta",w:"krell-consulting.com",d:"Capital 100 % español desde 2006. Compite cara a cara en asignación de perfiles."},
-{n:"Exis TI",c:"Staffing / Body shopping IT",o:"Español",ci:"Madrid",t:"M",s:["Staff augmentation","Outsourcing"],e:["Desarrollo","Sistemas","QA"],a:"Alta",w:"exis-ti.com",d:"Proveedor de perfiles TI para banca, seguros y sector público."},
-{n:"Quental",c:"Staffing / Body shopping IT",o:"Español",ci:"Madrid",t:"M",s:["Staff augmentation","Outsourcing","Proyectos"],e:["Desarrollo","Data","Cloud"],a:"Alta",w:"quental.es",d:"Servicios y soluciones tecnológicas de capital 100 % español."},
-{n:"Oxigent Technologies",c:"Staffing / Body shopping IT",o:"Español",ci:"Barcelona",t:"M",s:["Staff augmentation","Outsourcing","Proyectos"],e:["Desarrollo","Sistemas","Ciberseguridad"],a:"Media",w:"oxigent.com",d:"Staffing tecnológico y servicios gestionados en Cataluña."},
-{n:"TECDATA",c:"Staffing / Body shopping IT",o:"Español",ci:"Madrid",t:"M",s:["Staff augmentation","Outsourcing"],e:["Sistemas","Desarrollo","Soporte / Help Desk"],a:"Media",w:"tecdata.es",d:"Servicios profesionales TI con infraestructura propia en España."},
-{n:"Grupo ICA",c:"Staffing / Body shopping IT",o:"Español",ci:"Madrid",t:"M",s:["Staff augmentation","Outsourcing","Proyectos"],e:["Desarrollo","Sistemas","Ciberseguridad"],a:"Media",w:"grupoica.com",d:"Integrador y consultora TIC con unos 500–1.000 empleados."},
-{n:"Álamo Consulting",c:"Staffing / Body shopping IT",o:"Español",ci:"Madrid",t:"M",s:["Staff augmentation","Outsourcing"],e:["Desarrollo","SAP / ERP","Data"],a:"Alta",w:"alamoconsulting.com",d:"Consultoría TIC enfocada al mercado español. Asigna perfiles a grandes cuentas."},
-{n:"SEMIC",c:"Staffing / Body shopping IT",o:"Español",ci:"Lleida",t:"M",s:["Outsourcing","Proyectos","Staff augmentation"],e:["Sistemas","Cloud","Ciberseguridad"],a:"Baja",w:"semic.es",d:"Integrador TIC con delegaciones por toda España."},
-{n:"Serbatic",c:"Staffing / Body shopping IT",o:"Español",ci:"Madrid",t:"M",s:["Staff augmentation","Outsourcing","Proyectos"],e:["Desarrollo","Mainframe / Legacy","QA"],a:"Alta",w:"serbatic.es",d:"Consultora de perfiles TI muy presente en banca."},
-{n:"Bosonit",c:"Staffing / Body shopping IT",o:"Español",ci:"Logroño",t:"M",s:["Proyectos","Staff augmentation"],e:["Data","Cloud","Desarrollo"],a:"Media",w:"bosonit.com",d:"Especialista en data y cloud, con centros fuera de Madrid."},
-{n:"Grupo Oesía",c:"Staffing / Body shopping IT",o:"Español",ci:"Madrid",t:"M",s:["Outsourcing","Proyectos","Staff augmentation"],e:["Desarrollo","Ciberseguridad","Ingeniería"],a:"Media",w:"grupooesia.com",d:"Ingeniería y consultoría TIC, también en defensa."},
-{n:"Altia",c:"Staffing / Body shopping IT",o:"Español",ci:"A Coruña",t:"M",s:["Outsourcing","Proyectos","Staff augmentation"],e:["Desarrollo","Cloud","Sistemas"],a:"Media",w:"altia.es",d:"Cotizada en BME Growth. Fuerte en sector público."},
-{n:"Vector ITC (Softtek)",c:"Staffing / Body shopping IT",o:"Español",ci:"Pozuelo de Alarcón",t:"M",s:["Outsourcing","Staff augmentation","Proyectos"],e:["Desarrollo","QA","Data"],a:"Alta",w:"vectoritcgroup.com",d:"Grupo tecnológico español, hoy parte de Softtek: une red española con delivery en México."},
-{n:"RAS Interim",c:"Staffing / Body shopping IT",o:"Multinacional",ci:"Barcelona",t:"P",s:["Staff augmentation","Selección"],e:["Ingeniería","Soporte / Help Desk"],a:"Baja",w:"ras-interim.es",d:"ETT del grupo francés RAS con perfiles técnicos."},
-{n:"Serem",c:"Staffing / Body shopping IT",o:"Español",ci:"Madrid",t:"M",s:["Outsourcing","Proyectos","Staff augmentation"],e:["Desarrollo","Sistemas"],a:"Media",w:"serem.com",d:"Va de la consultoría al outsourcing de servicios y el desarrollo."},
+{u:"Staffing IT",n:"Krell Consulting",c:"Staffing / Body shopping IT",o:"Español",ci:"Madrid",t:"M",s:["Staff augmentation","Outsourcing","Selección"],e:["Desarrollo","SAP / ERP","Cloud","QA"],a:"Alta",w:"krell-consulting.com",d:"Capital 100 % español desde 2006. Compite cara a cara en asignación de perfiles."},
+{u:"Staffing IT",n:"Exis TI",c:"Staffing / Body shopping IT",o:"Español",ci:"Madrid",t:"M",s:["Staff augmentation","Outsourcing"],e:["Desarrollo","Sistemas","QA"],a:"Alta",w:"exis-ti.com",d:"Proveedor de perfiles TI para banca, seguros y sector público."},
+{u:"Staffing IT",n:"Quental",c:"Staffing / Body shopping IT",o:"Español",ci:"Madrid",t:"M",s:["Staff augmentation","Outsourcing","Proyectos"],e:["Desarrollo","Data","Cloud"],a:"Alta",w:"quental.es",d:"Servicios y soluciones tecnológicas de capital 100 % español."},
+{u:"Staffing IT",n:"Oxigent Technologies",c:"Staffing / Body shopping IT",o:"Español",ci:"Barcelona",t:"M",s:["Staff augmentation","Outsourcing","Proyectos"],e:["Desarrollo","Sistemas","Ciberseguridad"],a:"Media",w:"oxigent.com",d:"Staffing tecnológico y servicios gestionados en Cataluña."},
+{u:"Staffing IT",n:"TECDATA",c:"Staffing / Body shopping IT",o:"Español",ci:"Madrid",t:"M",s:["Staff augmentation","Outsourcing"],e:["Sistemas","Desarrollo","Soporte / Help Desk"],a:"Media",w:"tecdata.es",d:"Servicios profesionales TI con infraestructura propia en España."},
+{u:"Staffing IT",n:"Grupo ICA",c:"Staffing / Body shopping IT",o:"Español",ci:"Madrid",t:"M",s:["Staff augmentation","Outsourcing","Proyectos"],e:["Desarrollo","Sistemas","Ciberseguridad"],a:"Media",w:"grupoica.com",d:"Integrador y consultora TIC con unos 500–1.000 empleados."},
+{u:"Staffing IT",n:"Álamo Consulting",c:"Staffing / Body shopping IT",o:"Español",ci:"Madrid",t:"M",s:["Staff augmentation","Outsourcing"],e:["Desarrollo","SAP / ERP","Data"],a:"Alta",w:"alamoconsulting.com",d:"Consultoría TIC enfocada al mercado español. Asigna perfiles a grandes cuentas."},
+{u:"Staffing IT",n:"SEMIC",c:"Staffing / Body shopping IT",o:"Español",ci:"Lleida",t:"M",s:["Outsourcing","Proyectos","Staff augmentation"],e:["Sistemas","Cloud","Ciberseguridad"],a:"Baja",w:"semic.es",d:"Integrador TIC con delegaciones por toda España."},
+{u:"Staffing IT",n:"Serbatic",c:"Staffing / Body shopping IT",o:"Español",ci:"Madrid",t:"M",s:["Staff augmentation","Outsourcing","Proyectos"],e:["Desarrollo","Mainframe / Legacy","QA"],a:"Alta",w:"serbatic.es",d:"Consultora de perfiles TI muy presente en banca."},
+{u:"Staffing IT",n:"Bosonit",c:"Staffing / Body shopping IT",o:"Español",ci:"Logroño",t:"M",s:["Proyectos","Staff augmentation"],e:["Data","Cloud","Desarrollo"],a:"Media",w:"bosonit.com",d:"Especialista en data y cloud, con centros fuera de Madrid."},
+{u:"Staffing IT",n:"Grupo Oesía",c:"Staffing / Body shopping IT",o:"Español",ci:"Madrid",t:"M",s:["Outsourcing","Proyectos","Staff augmentation"],e:["Desarrollo","Ciberseguridad","Ingeniería"],a:"Media",w:"grupooesia.com",d:"Ingeniería y consultoría TIC, también en defensa."},
+{u:"Staffing IT",n:"Altia",c:"Staffing / Body shopping IT",o:"Español",ci:"A Coruña",t:"M",s:["Outsourcing","Proyectos","Staff augmentation"],e:["Desarrollo","Cloud","Sistemas"],a:"Media",w:"altia.es",d:"Cotizada en BME Growth. Fuerte en sector público."},
+{u:"Staffing IT",n:"Vector ITC (Softtek)",c:"Staffing / Body shopping IT",o:"Español",ci:"Pozuelo de Alarcón",t:"M",s:["Outsourcing","Staff augmentation","Proyectos"],e:["Desarrollo","QA","Data"],a:"Alta",w:"vectoritcgroup.com",d:"Grupo tecnológico español, hoy parte de Softtek: une red española con delivery en México."},
+{u:"Staffing IT",n:"RAS Interim",c:"Staffing / Body shopping IT",o:"Multinacional",ci:"Barcelona",t:"P",s:["Staff augmentation","Selección"],e:["Ingeniería","Soporte / Help Desk"],a:"Baja",w:"ras-interim.es",d:"ETT del grupo francés RAS con perfiles técnicos."},
+{u:"Staffing IT",n:"Serem",c:"Staffing / Body shopping IT",o:"Español",ci:"Madrid",t:"M",s:["Outsourcing","Proyectos","Staff augmentation"],e:["Desarrollo","Sistemas"],a:"Media",w:"serem.com",d:"Va de la consultoría al outsourcing de servicios y el desarrollo."},
 
 // ---------- Consultoras IT grandes con outsourcing / asignación de perfiles
-{n:"NTT DATA Spain",c:"Consultora IT con outsourcing",o:"Multinacional",ci:"Madrid",t:"G",s:["Outsourcing","Proyectos","Staff augmentation"],e:["Desarrollo","SAP / ERP","Cloud","Data"],a:"Media",w:"nttdata.com/es",d:"Gran contratante de subcontratas. Puede ser cliente y competidor a la vez."},
-{n:"Inetum España",c:"Consultora IT con outsourcing",o:"Multinacional",ci:"Madrid",t:"G",s:["Outsourcing","Proyectos","Staff augmentation"],e:["Desarrollo","Sistemas","SAP / ERP"],a:"Media",w:"inetum.com/es",d:"Muchos perfiles asignados en cliente. También subcontrata."},
-{n:"Viewnext (IBM)",c:"Consultora IT con outsourcing",o:"Multinacional",ci:"Madrid",t:"G",s:["Outsourcing","Proyectos"],e:["Mainframe / Legacy","Desarrollo","Sistemas"],a:"Baja",w:"viewnext.com",d:"Filial de IBM con centros de servicio nearshore en España."},
-{n:"Sopra Steria España",c:"Consultora IT con outsourcing",o:"Multinacional",ci:"Madrid",t:"G",s:["Outsourcing","Proyectos"],e:["Desarrollo","Data","Ciberseguridad"],a:"Baja",w:"soprasteria.es",d:"Consultora con fuerte AMS en banca y sector público."},
-{n:"Ayesa",c:"Consultora IT con outsourcing",o:"Español",ci:"Sevilla",t:"G",s:["Outsourcing","Proyectos"],e:["Desarrollo","SAP / ERP","Ingeniería"],a:"Baja",w:"ayesa.com",d:"Ingeniería y TI con centros de delivery en LatAm."},
-{n:"Minsait (Indra)",c:"Consultora IT con outsourcing",o:"Español",ci:"Madrid",t:"G",s:["Outsourcing","Proyectos"],e:["Desarrollo","Data","Ciberseguridad","Cloud"],a:"Baja",w:"minsait.com",d:"Grandes proyectos. Compite en outsourcing y en la captación de talento."},
-{n:"UST España",c:"Consultora IT con outsourcing",o:"Multinacional",ci:"Madrid",t:"M",s:["Outsourcing","Staff augmentation","Proyectos"],e:["Desarrollo","QA","Cloud"],a:"Media",w:"ust.com",d:"Delivery global con presencia en Madrid y Málaga."},
-{n:"CGI España",c:"Consultora IT con outsourcing",o:"Multinacional",ci:"Madrid",t:"M",s:["Outsourcing","Proyectos"],e:["Desarrollo","SAP / ERP","Sistemas"],a:"Baja",w:"cgi.com/es",d:"Servicios gestionados y consultoría."},
+{u:"Staffing IT",n:"NTT DATA Spain",c:"Consultora IT con outsourcing",o:"Multinacional",ci:"Madrid",t:"G",s:["Outsourcing","Proyectos","Staff augmentation"],e:["Desarrollo","SAP / ERP","Cloud","Data"],a:"Media",w:"nttdata.com/es",d:"Gran contratante de subcontratas. Puede ser cliente y competidor a la vez."},
+{u:"Staffing IT",n:"Inetum España",c:"Consultora IT con outsourcing",o:"Multinacional",ci:"Madrid",t:"G",s:["Outsourcing","Proyectos","Staff augmentation"],e:["Desarrollo","Sistemas","SAP / ERP"],a:"Media",w:"inetum.com/es",d:"Muchos perfiles asignados en cliente. También subcontrata."},
+{u:"Staffing IT",n:"Viewnext (IBM)",c:"Consultora IT con outsourcing",o:"Multinacional",ci:"Madrid",t:"G",s:["Outsourcing","Proyectos"],e:["Mainframe / Legacy","Desarrollo","Sistemas"],a:"Baja",w:"viewnext.com",d:"Filial de IBM con centros de servicio nearshore en España."},
+{u:"Staffing IT",n:"Sopra Steria España",c:"Consultora IT con outsourcing",o:"Multinacional",ci:"Madrid",t:"G",s:["Outsourcing","Proyectos"],e:["Desarrollo","Data","Ciberseguridad"],a:"Baja",w:"soprasteria.es",d:"Consultora con fuerte AMS en banca y sector público."},
+{u:"Staffing IT",n:"Ayesa",c:"Consultora IT con outsourcing",o:"Español",ci:"Sevilla",t:"G",s:["Outsourcing","Proyectos"],e:["Desarrollo","SAP / ERP","Ingeniería"],a:"Baja",w:"ayesa.com",d:"Ingeniería y TI con centros de delivery en LatAm."},
+{u:"Staffing IT",n:"Minsait (Indra)",c:"Consultora IT con outsourcing",o:"Español",ci:"Madrid",t:"G",s:["Outsourcing","Proyectos"],e:["Desarrollo","Data","Ciberseguridad","Cloud"],a:"Baja",w:"minsait.com",d:"Grandes proyectos. Compite en outsourcing y en la captación de talento."},
+{u:"Staffing IT",n:"UST España",c:"Consultora IT con outsourcing",o:"Multinacional",ci:"Madrid",t:"M",s:["Outsourcing","Staff augmentation","Proyectos"],e:["Desarrollo","QA","Cloud"],a:"Media",w:"ust.com",d:"Delivery global con presencia en Madrid y Málaga."},
+{u:"Staffing IT",n:"CGI España",c:"Consultora IT con outsourcing",o:"Multinacional",ci:"Madrid",t:"M",s:["Outsourcing","Proyectos"],e:["Desarrollo","SAP / ERP","Sistemas"],a:"Baja",w:"cgi.com/es",d:"Servicios gestionados y consultoría."},
 
 // ---------- Nearshore LatAm
-{n:"Softtek",c:"Nearshore LatAm",o:"LatAm",ci:"Madrid",t:"G",s:["Outsourcing","Staff augmentation","Proyectos"],e:["Desarrollo","QA","SAP / ERP","Data"],a:"Alta",w:"softtek.com",d:"Mexicana, con presencia directa en España vía Vector ITC. Competidor nearshore muy directo."},
-{n:"Globant",c:"Nearshore LatAm",o:"LatAm",ci:"Madrid",t:"G",s:["Proyectos","Staff augmentation"],e:["Desarrollo","Data","IA","Producto"],a:"Media",w:"globant.com",d:"Argentina con oficina en Madrid. Vende proyectos de producto más que perfiles sueltos."},
-{n:"BairesDev",c:"Nearshore LatAm",o:"LatAm",ci:"Remoto",t:"G",s:["Staff augmentation","Proyectos"],e:["Desarrollo","QA","Data"],a:"Media",w:"bairesdev.com",d:"Staff augmentation LatAm de gran escala, enfocada en EE. UU. pero con alcance global."},
-{n:"Blue Coding",c:"Nearshore LatAm",o:"LatAm",ci:"Remoto",t:"P",s:["Staff augmentation","Selección","Proyectos"],e:["Desarrollo","QA"],a:"Media",w:"bluecoding.com",d:"Staff augmentation, direct hire y BOT con talento LatAm."},
-{n:"Tecla",c:"Nearshore LatAm",o:"LatAm",ci:"Remoto",t:"P",s:["Staff augmentation","Selección"],e:["Desarrollo","Data","Cloud"],a:"Media",w:"tecla.io",d:"Red de más de 50.000 seniors LatAm verificados, con 14 días de prueba sin riesgo."},
-{n:"N-iX",c:"Nearshore LatAm",o:"Multinacional",ci:"Remoto",t:"M",s:["Staff augmentation","Proyectos"],e:["Desarrollo","Data","Cloud"],a:"Baja",w:"n-ix.com",d:"Ucraniana con hubs en LatAm y Europa del Este."},
+{u:"Staffing IT",n:"Softtek",c:"Nearshore LatAm",o:"LatAm",ci:"Madrid",t:"G",s:["Outsourcing","Staff augmentation","Proyectos"],e:["Desarrollo","QA","SAP / ERP","Data"],a:"Alta",w:"softtek.com",d:"Mexicana, con presencia directa en España vía Vector ITC. Competidor nearshore muy directo."},
+{u:"Staffing IT",n:"Globant",c:"Nearshore LatAm",o:"LatAm",ci:"Madrid",t:"G",s:["Proyectos","Staff augmentation"],e:["Desarrollo","Data","IA","Producto"],a:"Media",w:"globant.com",d:"Argentina con oficina en Madrid. Vende proyectos de producto más que perfiles sueltos."},
+{u:"Staffing IT",n:"BairesDev",c:"Nearshore LatAm",o:"LatAm",ci:"Remoto",t:"G",s:["Staff augmentation","Proyectos"],e:["Desarrollo","QA","Data"],a:"Media",w:"bairesdev.com",d:"Staff augmentation LatAm de gran escala, enfocada en EE. UU. pero con alcance global."},
+{u:"Staffing IT",n:"Blue Coding",c:"Nearshore LatAm",o:"LatAm",ci:"Remoto",t:"P",s:["Staff augmentation","Selección","Proyectos"],e:["Desarrollo","QA"],a:"Media",w:"bluecoding.com",d:"Staff augmentation, direct hire y BOT con talento LatAm."},
+{u:"Staffing IT",n:"Tecla",c:"Nearshore LatAm",o:"LatAm",ci:"Remoto",t:"P",s:["Staff augmentation","Selección"],e:["Desarrollo","Data","Cloud"],a:"Media",w:"tecla.io",d:"Red de más de 50.000 seniors LatAm verificados, con 14 días de prueba sin riesgo."},
+{u:"Staffing IT",n:"N-iX",c:"Nearshore LatAm",o:"Multinacional",ci:"Remoto",t:"M",s:["Staff augmentation","Proyectos"],e:["Desarrollo","Data","Cloud"],a:"Baja",w:"n-ix.com",d:"Ucraniana con hubs en LatAm y Europa del Este."},
 
 // ---------- Plataformas y marketplaces
-{n:"Joppy",c:"Plataforma / Marketplace",o:"Español",ci:"Valencia",t:"P",s:["Marketplace","Selección"],e:["Desarrollo","Data"],a:"Media",w:"joppy.me",d:"Matching tech. Compró el negocio de Rviewer y superó los 70.000 candidatos."},
-{n:"TalentFY",c:"Plataforma / Marketplace",o:"Español",ci:"Madrid",t:"P",s:["Marketplace","Selección"],e:["Desarrollo","Data","Marketing digital"],a:"Media",w:"talentfy.es",d:"Marketplace B2B de recruiters freelance IT, con más de 80 en España."},
-{n:"Malt",c:"Plataforma / Marketplace",o:"Multinacional",ci:"Remoto",t:"M",s:["Freelance"],e:["Desarrollo","Data","Producto"],a:"Media",w:"malt.es",d:"Freelancers europeos: alternativa al body shopping para proyectos cortos."},
-{n:"Workana",c:"Plataforma / Marketplace",o:"LatAm",ci:"Remoto",t:"P",s:["Freelance"],e:["Desarrollo","Marketing digital"],a:"Baja",w:"workana.com",d:"Freelancers LatAm en español. Presiona precio en la gama baja."},
-{n:"Toptal",c:"Plataforma / Marketplace",o:"Multinacional",ci:"Remoto",t:"M",s:["Freelance","Staff augmentation"],e:["Desarrollo","Data","Producto"],a:"Media",w:"toptal.com",d:"El ‘top 3 %’ de freelancers verificados. Compite en perfiles senior."},
-{n:"Turing",c:"Plataforma / Marketplace",o:"Multinacional",ci:"Remoto",t:"M",s:["Staff augmentation","Freelance"],e:["Desarrollo","IA","Data"],a:"Baja",w:"turing.com",d:"Ingenieros remotos validados por IA, con talento LatAm y global."},
-{n:"Uplers",c:"Plataforma / Marketplace",o:"Multinacional",ci:"Remoto",t:"M",s:["Staff augmentation"],e:["Desarrollo","QA"],a:"Baja",w:"uplers.com",d:"Staff outsourcing desde India a menos de 25 USD/h."},
-{n:"Avomind",c:"Plataforma / Marketplace",o:"Multinacional",ci:"Remoto",t:"P",s:["Selección","Staff augmentation"],e:["Desarrollo","Producto"],a:"Media",w:"avomind.com",d:"Recruitment remoto para tech, en el ranking de Clutch España."},
-{n:"OnHires",c:"Plataforma / Marketplace",o:"Multinacional",ci:"Remoto",t:"P",s:["Selección","Headhunting directivo","Staff augmentation"],e:["Desarrollo","Data"],a:"Media",w:"onhires.com",d:"Selección IT remota con más de 100 proyectos en Clutch."}
+{u:"Staffing IT",n:"Joppy",c:"Plataforma / Marketplace",o:"Español",ci:"Valencia",t:"P",s:["Marketplace","Selección"],e:["Desarrollo","Data"],a:"Media",w:"joppy.me",d:"Matching tech. Compró el negocio de Rviewer y superó los 70.000 candidatos."},
+{u:"Staffing IT",n:"TalentFY",c:"Plataforma / Marketplace",o:"Español",ci:"Madrid",t:"P",s:["Marketplace","Selección"],e:["Desarrollo","Data","Marketing digital"],a:"Media",w:"talentfy.es",d:"Marketplace B2B de recruiters freelance IT, con más de 80 en España."},
+{u:"Staffing IT",n:"Malt",c:"Plataforma / Marketplace",o:"Multinacional",ci:"Remoto",t:"M",s:["Freelance"],e:["Desarrollo","Data","Producto"],a:"Media",w:"malt.es",d:"Freelancers europeos: alternativa al body shopping para proyectos cortos."},
+{u:"Staffing IT",n:"Workana",c:"Plataforma / Marketplace",o:"LatAm",ci:"Remoto",t:"P",s:["Freelance"],e:["Desarrollo","Marketing digital"],a:"Baja",w:"workana.com",d:"Freelancers LatAm en español. Presiona precio en la gama baja."},
+{u:"Staffing IT",n:"Toptal",c:"Plataforma / Marketplace",o:"Multinacional",ci:"Remoto",t:"M",s:["Freelance","Staff augmentation"],e:["Desarrollo","Data","Producto"],a:"Media",w:"toptal.com",d:"El ‘top 3 %’ de freelancers verificados. Compite en perfiles senior."},
+{u:"Staffing IT",n:"Turing",c:"Plataforma / Marketplace",o:"Multinacional",ci:"Remoto",t:"M",s:["Staff augmentation","Freelance"],e:["Desarrollo","IA","Data"],a:"Baja",w:"turing.com",d:"Ingenieros remotos validados por IA, con talento LatAm y global."},
+{u:"Staffing IT",n:"Uplers",c:"Plataforma / Marketplace",o:"Multinacional",ci:"Remoto",t:"M",s:["Staff augmentation"],e:["Desarrollo","QA"],a:"Baja",w:"uplers.com",d:"Staff outsourcing desde India a menos de 25 USD/h."},
+{u:"Staffing IT",n:"Avomind",c:"Plataforma / Marketplace",o:"Multinacional",ci:"Remoto",t:"P",s:["Selección","Staff augmentation"],e:["Desarrollo","Producto"],a:"Media",w:"avomind.com",d:"Recruitment remoto para tech, en el ranking de Clutch España."},
+{u:"Staffing IT",n:"OnHires",c:"Plataforma / Marketplace",o:"Multinacional",ci:"Remoto",t:"P",s:["Selección","Headhunting directivo","Staff augmentation"],e:["Desarrollo","Data"],a:"Media",w:"onhires.com",d:"Selección IT remota con más de 100 proyectos en Clutch."},
+
+// =============== HOSPITALITY TECH ===============
+// ---------- Redes, WiFi y GPON
+{u:"Hospitality Tech",n:"Cibersuite Networks",c:"Hospitality · Redes, WiFi y GPON",o:"Español",ci:"Sin dato",t:"P",s:["WiFi","GPON / Fibra","VoIP","IPTV","CCTV","Llave en mano","Soporte 24/7"],e:["Hoteles","Cadenas hoteleras","Pymes"],a:"Alta",w:"cibersuite.com",d:"WiFi, GPON, centralitas IP, IPTV (Cast TV) y videovigilancia para hoteles. Plataforma propia WiFi·PRO con monitorización y marketing WiFi, integrada con CRM y PMS. Es el solapamiento más directo con la oferta de redes de Mindata."},
+{u:"Hospitality Tech",n:"Hotelinking",c:"Hospitality · Redes, WiFi y GPON",o:"Español",ci:"Sin dato",t:"P",s:["WiFi","GPON / Fibra","Llave en mano","Marketing WiFi"],e:["Hoteles","Cadenas hoteleras"],a:"Alta",w:"hotelinking.com",d:"WiFi y marketing para hoteles (WiFiBot), con proyectos integrales de red tradicional o GPON. Hizo la red del Hotel Zafiro Alzinar Mar con TP-Link Omada."},
+{u:"Hospitality Tech",n:"Cerium",c:"Hospitality · Redes, WiFi y GPON",o:"Español",ci:"Sin dato",t:"P",s:["WiFi","GPON / Fibra","Ciberseguridad","Llave en mano"],e:["Hoteles"],a:"Alta",w:"",d:"Diseña, gestiona e implanta redes GPON y WiFi en hoteles. Es socio del Instituto Tecnológico Hotelero (ITH) en ciberseguridad y redes. Verificar la web."},
+{u:"Hospitality Tech",n:"Televés Hospitality",c:"Hospitality · Redes, WiFi y GPON",o:"Español",ci:"Santiago de Compostela",t:"M",s:["GPON / Fibra","IPTV","VoIP","Digital signage"],e:["Hoteles","Cadenas hoteleras"],a:"Alta",w:"televes.com",d:"Fabricante con GPON homologado por Marriott. Su plataforma ArantiaTV hace TV interactiva y signage, y sus soluciones llegan a más de 70.000 habitaciones."},
+{u:"Hospitality Tech",n:"Wifirst",c:"Hospitality · Redes, WiFi y GPON",o:"Multinacional",ci:"Internacional",t:"M",s:["WiFi","Soporte 24/7","Llave en mano"],e:["Hoteles","Residencias"],a:"Media",w:"wifirst.com",d:"WiFi gestionado de extremo a extremo, de origen francés. Crece en el ranking de WiFi hotelero de HotelTechReport."},
+{u:"Hospitality Tech",n:"Purple",c:"Hospitality · Redes, WiFi y GPON",o:"Multinacional",ci:"Internacional",t:"M",s:["WiFi","Marketing WiFi"],e:["Hoteles","Retail"],a:"Baja",w:"purple.ai",d:"Software de WiFi para huéspedes: captive portal, integración PMS y analítica. Compite con la capa de software de WiFi."},
+
+// ---------- IPTV y entretenimiento
+{u:"Hospitality Tech",n:"Zafiro (Entertainment Solutions)",c:"Hospitality · IPTV y entretenimiento",o:"Español",ci:"Sin dato",t:"P",s:["IPTV","Casting","Digital signage","App huésped","WiFi","SaaS"],e:["Hoteles","Cadenas hoteleras","Hospitales","Marítimo","Recintos deportivos"],a:"Alta",w:"zafiro.tv",d:"IPTV interactiva (ROOM TV), signage, app de huésped y Google Cast, en SaaS sobre AWS. Clientes: Meliá, Paradores, Palladium, IHG, Hilton, Accor, Hyatt y Club Med."},
+{u:"Hospitality Tech",n:"GuestTek",c:"Hospitality · IPTV y entretenimiento",o:"Multinacional",ci:"Internacional",t:"M",s:["IPTV","WiFi","Soporte 24/7"],e:["Cadenas hoteleras"],a:"Media",w:"guestek.com",d:"Se presenta como el mayor proveedor mundial de IPTV e internet para hotelería: diseño de red, implantación y soporte 24/7."},
+{u:"Hospitality Tech",n:"Enseo",c:"Hospitality · IPTV y entretenimiento",o:"Multinacional",ci:"Internacional",t:"M",s:["IPTV","Digital signage","WiFi"],e:["Cadenas hoteleras","Hospitales"],a:"Baja",w:"enseo.com",d:"Entretenimiento y control de habitación más signage para grandes grupos hoteleros. Es más fuerte en EE. UU."},
+{u:"Hospitality Tech",n:"Nevotek (NevoTV)",c:"Hospitality · IPTV y entretenimiento",o:"Multinacional",ci:"Internacional",t:"P",s:["IPTV","App huésped"],e:["Hoteles"],a:"Baja",w:"nevotek.com",d:"IPTV interactiva con TV, información, control y conectividad en la habitación."},
+
+// ---------- Operadores e integradores
+{u:"Hospitality Tech",n:"Telefónica Empresas",c:"Hospitality · Operadores e integradores",o:"Español",ci:"Madrid",t:"G",s:["WiFi","GPON / Fibra","VoIP","Llave en mano"],e:["Cadenas hoteleras"],a:"Media",w:"telefonica.es/es/empresas",d:"Proveedor tecnológico en la digitalización de 19 hoteles de Meliá en Canarias. Competidor en grandes cuentas."},
+{u:"Hospitality Tech",n:"Eurona",c:"Hospitality · Operadores e integradores",o:"Español",ci:"Sin dato",t:"M",s:["WiFi","Soporte 24/7"],e:["Hoteles","Cadenas hoteleras"],a:"Media",w:"eurona.es",d:"Operador con WiFi hotelero en unas 2.000 habitaciones en España y 8.000 en México, República Dominicana, Colombia y Panamá.",la:true},
+{u:"Hospitality Tech",n:"Grupo Royal Telecom",c:"Hospitality · Operadores e integradores",o:"Español",ci:"Baleares",t:"P",s:["GPON / Fibra","WiFi","Llave en mano"],e:["Hoteles"],a:"Media",w:"",d:"Integrador que desplegó GPON de punta a punta con Zyxel en Ona Hotels Sóller Bay (Mallorca). Verificar la web."},
+{u:"Hospitality Tech",n:"Hercam",c:"Hospitality · Operadores e integradores",o:"Español",ci:"Valencia",t:"P",s:["WiFi","Ciberseguridad","Llave en mano"],e:["Hoteles","Empresas"],a:"Baja",w:"",d:"Integrador con más de 25 años. Hizo la conectividad y seguridad del Hotel Turia (Valencia) con TP-Link Omada. Verificar la web."},
+{u:"Hospitality Tech",n:"Leader Redes y Comunicaciones",c:"Hospitality · Operadores e integradores",o:"Español",ci:"Valencia",t:"P",s:["VoIP","WiFi","Integración PMS"],e:["Hoteles"],a:"Baja",w:"",d:"Partner de Avaya: telefonía IP y WiFi integrado con el PMS en el Hotel Primus Valencia. Verificar la web."}
 ];
+
+/* ============ CLIENTES NO ATACABLES ============
+   Fuente: "Listado clientes NO atacables" (Google Sheet). Columna "Respuestas Juan de Castro":
+   "SÍ DE MOMENTO" = se puede atacar por ahora → NO va a blacklist (se marca ✅).
+   k = palabras clave para cruzar con el nombre de la empresa del directorio. */
+const BL=[
+ {k:["accenture"],n:"Accenture (España)",o:"Ninguna de sus sociedades. ¿Cuáles son sus sociedades? En Argentina podemos atacar."},
+ {k:["airplane"],n:"Airplane"},
+ {k:["altia"],n:"Altia",ok:1},
+ {k:["applause"],n:"Applause"},
+ {k:["atos"],n:"Atos",ok:1},
+ {k:["aubay"],n:"Aubay",ok:1},
+ {k:["avoris"],n:"Avoris y derivados",o:"¿Quiénes son los derivados?"},
+ {k:["axa"],n:"AXA"},
+ {k:["barcelo","barceló"],n:"Barceló Hoteles"},
+ {k:["caceis"],n:"Caceis"},
+ {k:["camper"],n:"Camper"},
+ {k:["capgemini"],n:"Capgemini"},
+ {k:["carglass"],n:"Carglass"},
+ {k:["catalonia hotels"],n:"Catalonia Hotels"},
+ {k:["everis","ntt data"],n:"Everis - NTT DATA",ok:1},
+ {k:["globalvia"],n:"Globalvia"},
+ {k:["antolin","antolín"],n:"Grupo Antolín"},
+ {k:["hotusa"],n:"Hotusa"},
+ {k:["hyatt"],n:"Hyatt"},
+ {k:["h10"],n:"H10"},
+ {k:["iberostar"],n:"Iberostar"},
+ {k:["industrias duero"],n:"Industrias Duero"},
+ {k:["inetum"],n:"Inetum"},
+ {k:["intricom"],n:"Intricom"},
+ {k:["jumbotours","jumbo tours"],n:"JumboTours"},
+ {k:["minsait"],n:"MINSAIT",ok:1},
+ {k:["meliá","melia"],n:"Meliá"},
+ {k:["omniacess","omniaccess"],n:"Omniacess",ok:1},
+ {k:["quant"],n:"Quant",ok:1},
+ {k:["radisson"],n:"Radisson Hoteles"},
+ {k:["riskiq"],n:"RISKIQ INC."},
+ {k:["riu","tui"],n:"RIU / TUI"},
+ {k:["w2m","world2meet"],n:"W2M",o:"No enviar candidatos de: Plexus, 3 Digits, ATSistemas, Sermicro, Juniper (W2M les avisará si enviamos candidatos suyos)."},
+ {k:["iproom"],n:"IPRoom"},
+ {k:["seidor"],n:"SEIDOR",o:"De momento es NO atacable (27-10-26)."}
+];
+const blOf=x=>{const nm=" "+x.n.toLowerCase().replace(/[()\/,.-]/g," ")+" ";
+  return BL.find(b=>b.k.some(k=>new RegExp("(^|\\s)"+k.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"(\\s|$)").test(nm)))||null};
 
 /* ================= LÓGICA ================= */
 const $=s=>document.querySelector(s);
-const st={cat:"",q:"",thr:new Set(),orig:"",city:"",size:"",srv:new Set(),esp:new Set(),latam:false,view:"cards",sort:"thr"};
+const st={bl:"",u:"",cat:"",q:"",thr:new Set(),orig:"",city:"",size:"",srv:new Set(),esp:new Set(),latam:false,view:"cards",sort:"thr"};
 const THR=["Alta","Media","Baja"],THRo={Alta:0,Media:1,Baja:2},SZo={G:0,M:1,P:2};
-D.forEach(x=>{if(x.la===undefined)x.la=(x.o==="LatAm"||/LatAm|México|Argentina/i.test(x.d))});
-const uniq=k=>[...new Set(D.flatMap(x=>[].concat(x[k])))].sort((a,b)=>a.localeCompare(b,'es'));
+D.forEach(x=>{const b=blOf(x);x.bl=b?(b.ok?"ok":"no"):"";x.blN=b;if(x.la===undefined)x.la=(x.o==="LatAm"||/LatAm|México|Argentina/i.test(x.d))});
+const U=()=>D.filter(x=>!st.u||x.u===st.u);
+const uniq=(k,src=D)=>[...new Set(src.flatMap(x=>[].concat(x[k])))].sort((a,b)=>a.localeCompare(b,'es'));
 const col=c=>`var(${CATS[c]})`;
 const liUrl=x=>`https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent((x.n.split(" (")[0])+" talent acquisition OR \"head of\" OR director")}`;
 const liCo=x=>`https://www.linkedin.com/search/results/companies/?keywords=${encodeURIComponent(x.n.split(" (")[0])}`;
 
 function initUI(){
-  // stats
-  $("#sTotal").textContent=D.length;
-  $("#sAlta").textContent=D.filter(x=>x.a==="Alta").length;
-  $("#sCats").textContent=Object.keys(CATS).length;
-  $("#sCities").textContent=uniq("ci").filter(c=>c!=="Remoto").length;
-  $("#sLatam").textContent=D.filter(x=>x.la).length;
+  const un=$("#units");
+  const mkU=(label,val,sub)=>{const b=document.createElement("button");b.innerHTML=label+(sub?`<span>${D.filter(x=>x.u===val).length}</span>`:`<span>${D.length}</span>`);
+    b.onclick=()=>{st.u=val;st.cat="";st.srv.clear();st.esp.clear();st.city="";st.orig="";$("#fCity").value="";$("#fOrig").value="";refreshUnit();render()};b.dataset.u=val;return b};
+  un.append(mkU("Todas","",0));Object.keys(UNITS).forEach(k=>un.append(mkU(k,k,1)));
+  window.refreshUnit=()=>{
+    document.querySelectorAll("#units button").forEach(b=>b.classList.toggle("on",b.dataset.u===st.u));
+    const S=U();
+    $("#sTotal").textContent=S.length;
+    $("#sAlta").textContent=S.filter(x=>x.a==="Alta").length;
+    $("#sBl").textContent=S.filter(x=>x.bl==="no").length;
+    $("#sCats").textContent=new Set(S.map(x=>x.c)).size;
+    $("#sCities").textContent=uniq("ci",S).filter(c=>!["Remoto","Internacional","Sin dato"].includes(c)).length;
+    $("#sLatam").textContent=S.filter(x=>x.la).length;
+    $("#sLatamL").textContent=st.u==="Hospitality Tech"?"Con presencia LatAm":"Con talento LatAm";
+    $("#lEsp").textContent=st.u==="Hospitality Tech"?"Segmento":st.u==="Staffing IT"?"Especialidad":"Especialidad / segmento";
+    $("#insTxt").innerHTML=INS[st.u];
+    initChips();
+    const fill=(sel,vals,label)=>{$(sel).innerHTML=`<option value="">${label}</option>`+vals.map(v=>`<option>${v}</option>`).join("")};
+    fill("#fOrig",uniq("o",S),"Todos los orígenes");fill("#fCity",uniq("ci",S),"Todas las ciudades");
+    const opts=(el,vals,set)=>{el.innerHTML="";vals.forEach(v=>{const o=document.createElement("span");o.className="opt"+(set.has(v)?" on":"");o.textContent=v;
+      o.onclick=()=>{set.has(v)?set.delete(v):set.add(v);o.classList.toggle("on");render()};el.append(o)})};
+    opts($("#fSrv"),uniq("s",S),st.srv);opts($("#fEsp"),uniq("e",S),st.esp);
+  };
   $("#fTot").textContent=D.length+" competidores en total";
-  // chips categoría
   const cats=$("#cats");
   const mk=(label,val,c)=>{const b=document.createElement("button");b.className="chip"+(st.cat===val?" on":"");
-    const cnt=val?D.filter(x=>x.c===val).length:D.length;
+    const cnt=val?D.filter(x=>x.c===val).length:U().length;
     b.innerHTML=(c?`<span class="dot" style="background:${col(c)}"></span>`:"")+label+` <span class="cnt">${cnt}</span>`;
     b.onclick=()=>{st.cat=val;initChips();render()};return b};
-  window.initChips=()=>{cats.innerHTML="";cats.append(mk("Todas","",null));Object.keys(CATS).forEach(c=>cats.append(mk(c,c,c)))};
-  initChips();
-  // selects
-  uniq("o").forEach(v=>$("#fOrig").insertAdjacentHTML("beforeend",`<option>${v}</option>`));
-  uniq("ci").forEach(v=>$("#fCity").insertAdjacentHTML("beforeend",`<option>${v}</option>`));
-  // multi opts
-  const opts=(el,vals,set)=>{vals.forEach(v=>{const o=document.createElement("span");o.className="opt";o.textContent=v;
-    o.onclick=()=>{set.has(v)?set.delete(v):set.add(v);o.classList.toggle("on");render()};el.append(o)})};
-  opts($("#fThr"),THR,st.thr);opts($("#fSrv"),uniq("s"),st.srv);opts($("#fEsp"),uniq("e"),st.esp);
+  window.initChips=()=>{cats.innerHTML="";cats.append(mk("Todas","",null));Object.keys(CATS).filter(c=>U().some(x=>x.c===c)).forEach(c=>cats.append(mk(c,c,c)))};
+  const thr=$("#fThr");THR.forEach(v=>{const o=document.createElement("span");o.className="opt";o.textContent=v;
+    o.onclick=()=>{st.thr.has(v)?st.thr.delete(v):st.thr.add(v);o.classList.toggle("on");render()};thr.append(o)});
+  refreshUnit();
   // events
   $("#q").oninput=e=>{st.q=e.target.value.toLowerCase();render()};
   $("#fOrig").onchange=e=>{st.orig=e.target.value;render()};
   $("#fCity").onchange=e=>{st.city=e.target.value;render()};
   $("#fSize").onchange=e=>{st.size=e.target.value;render()};
   $("#fLatam").onchange=e=>{st.latam=e.target.checked;render()};
+  $("#fBl").onchange=e=>{st.bl=e.target.value;render()};
   $("#sort").onchange=e=>{st.sort=e.target.value;render()};
   document.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".seg button").forEach(x=>x.classList.remove("on"));b.classList.add("on");st.view=b.dataset.v;render()});
-  $("#reset").onclick=()=>{Object.assign(st,{cat:"",q:"",orig:"",city:"",size:"",latam:false});st.thr.clear();st.srv.clear();st.esp.clear();
-    ["#q","#fOrig","#fCity","#fSize"].forEach(s=>$(s).value="");$("#fLatam").checked=false;
-    document.querySelectorAll(".opt.on").forEach(o=>o.classList.remove("on"));initChips();render()};
+  $("#reset").onclick=()=>{Object.assign(st,{bl:"",u:st.u,cat:"",q:"",orig:"",city:"",size:"",latam:false});st.thr.clear();st.srv.clear();st.esp.clear();
+    ["#q","#fOrig","#fCity","#fSize","#fBl"].forEach(s=>$(s).value="");$("#fLatam").checked=false;
+    document.querySelectorAll(".opt.on").forEach(o=>o.classList.remove("on"));refreshUnit();render()};
   $("#xls").onclick=exportXls;
 }
 
 function filtered(){
   let r=D.filter(x=>{
+    if(st.u&&x.u!==st.u)return false;
+    if(st.bl==="hide"&&x.bl==="no")return false;
+    if(st.bl==="only"&&x.bl!=="no")return false;
+    if(st.bl==="ok"&&x.bl!=="ok")return false;
     if(st.cat&&x.c!==st.cat)return false;
     if(st.orig&&x.o!==st.orig)return false;
     if(st.city&&x.ci!==st.city)return false;
@@ -308,7 +416,7 @@ function filtered(){
     if(st.thr.size&&!st.thr.has(x.a))return false;
     if(st.srv.size&&![...st.srv].every(s=>x.s.includes(s)))return false;
     if(st.esp.size&&![...st.esp].every(s=>x.e.includes(s)))return false;
-    if(st.q){const h=(x.n+" "+x.d+" "+x.c+" "+x.e.join(" ")+" "+x.s.join(" ")+" "+x.ci).toLowerCase();if(!h.includes(st.q))return false}
+    if(st.q){const h=(x.n+" "+x.d+" "+x.c+" "+x.e.join(" ")+" "+x.s.join(" ")+" "+x.ci+" "+x.u).toLowerCase();if(!h.includes(st.q))return false}
     return true});
   const s={thr:(a,b)=>THRo[a.a]-THRo[b.a]||a.n.localeCompare(b.n,'es'),az:(a,b)=>a.n.localeCompare(b.n,'es'),
     size:(a,b)=>SZo[a.t]-SZo[b.t]||a.n.localeCompare(b.n,'es'),cat:(a,b)=>a.c.localeCompare(b.c,'es')||THRo[a.a]-THRo[b.a]};
@@ -316,9 +424,10 @@ function filtered(){
 }
 
 function bars(r){
-  const max=Math.max(...Object.keys(CATS).map(c=>D.filter(x=>x.c===c).length));
+  const cs=Object.keys(CATS).filter(c=>U().some(x=>x.c===c));
+  const max=Math.max(...cs.map(c=>D.filter(x=>x.c===c).length));
   $("#bars").innerHTML=`<div style="font-size:11px;text-transform:uppercase;letter-spacing:.6px;opacity:.6;margin-bottom:4px">Resultados por categoría · <span style="color:#ff8a8a">■</span> amenaza alta</div>`+
-  Object.keys(CATS).map(c=>{const n=r.filter(x=>x.c===c).length,h=r.filter(x=>x.c===c&&x.a==="Alta").length;
+  cs.map(c=>{const n=r.filter(x=>x.c===c).length,h=r.filter(x=>x.c===c&&x.a==="Alta").length;
    return `<div class="brow"><span>${c}</span><div class="btrack" style="position:relative"><div class="bfill" style="width:${n/max*100}%;background:${col(c)};opacity:.55;position:absolute;inset:0 auto 0 0"></div><div class="bfill" style="width:${h/max*100}%;background:#ff8a8a;position:absolute;inset:0 auto 0 0"></div></div><b>${n}</b></div>`}).join("");
 }
 
@@ -329,8 +438,9 @@ function render(){
   if(!r.length){out.innerHTML=`<div class="empty">Ningún competidor coincide con estos filtros.</div>`;return}
   if(st.view==="cards"){
     out.innerHTML=`<div class="grid">${r.map(x=>`
-      <div class="card" style="--cc:${col(x.c)}">
-        <div class="top"><div><h4>${esc(x.n)}</h4><div class="cat">${x.c}</div></div><span class="thr ${x.a}">${x.a}</span></div>
+      <div class="card${x.bl==="no"?" isbl":""}" style="--cc:${col(x.c)}">
+        <div class="top"><div><h4>${x.bl==="no"?"🚫 ":""}${esc(x.n)}</h4><div class="cat">${x.c}</div><div style="font-size:11px;color:var(--mute)">${x.u}</div></div><div style="display:flex;flex-direction:column;gap:4px;align-items:flex-end"><span class="thr ${x.a}">${x.a}</span>${x.bl==="no"?'<span class="bl">🚫 No atacable</span>':x.bl==="ok"?'<span class="bl ok">✅ Atacable de momento</span>':""}</div></div>
+        ${x.bl==="no"?`<div class="blnote">🚫 Cliente no atacable${x.blN.o?": "+esc(x.blN.o):""}</div>`:x.bl==="ok"?`<div class="blnote ok">✅ En listado de no atacables, pero Juan de Castro: «SÍ DE MOMENTO»</div>`:""}
         <div class="meta"><span>📍 ${x.ci}</span><span>👥 ${SIZE[x.t]}</span><span>🌐 ${x.o}</span>${x.la?'<span>🌎 LatAm</span>':''}</div>
         <div class="note">${esc(x.d)}</div>
         <div class="pills">${x.s.map(s=>`<span class="pill s">${s}</span>`).join("")}</div>
@@ -338,9 +448,9 @@ function render(){
         <div class="links">${x.w?`<a href="https://${x.w}" target="_blank" rel="noopener">Web ↗</a>`:""}<a href="${liCo(x)}" target="_blank" rel="noopener">Empresa</a><a class="li" href="${liUrl(x)}" target="_blank" rel="noopener">Decisores in</a></div>
       </div>`).join("")}</div>`;
   }else{
-    out.innerHTML=`<div class="tw"><table><thead><tr><th>Empresa</th><th>Categoría</th><th>Amenaza</th><th>Ciudad</th><th>Tamaño</th><th>Servicios</th><th>Especialidades</th><th>Posicionamiento</th><th></th></tr></thead><tbody>${r.map(x=>`
-      <tr><td><b>${esc(x.n)}</b><br><span style="color:var(--mute);font-size:12px">${x.o}${x.la?" · LatAm":""}</span></td>
-      <td><span style="color:${col(x.c)};font-weight:700">${x.c}</span></td><td><span class="thr ${x.a}">${x.a}</span></td>
+    out.innerHTML=`<div class="tw"><table><thead><tr><th>Empresa</th><th>Unidad</th><th>Categoría</th><th>Amenaza</th><th>Ciudad</th><th>Tamaño</th><th>Servicios</th><th>Especialidades</th><th>Posicionamiento</th><th></th></tr></thead><tbody>${r.map(x=>`
+      <tr class="${x.bl==="no"?"isbl":""}"><td><b>${x.bl==="no"?"🚫 ":x.bl==="ok"?"✅ ":""}${esc(x.n)}</b><br><span style="color:var(--mute);font-size:12px">${x.o}${x.la?" · LatAm":""}</span></td>
+      <td>${x.u}</td><td><span style="color:${col(x.c)};font-weight:700">${x.c}</span></td><td><span class="thr ${x.a}">${x.a}</span></td>
       <td>${x.ci}</td><td>${SIZE[x.t]}</td>
       <td><div class="pills">${x.s.map(s=>`<span class="pill s">${s}</span>`).join("")}</div></td>
       <td><div class="pills">${x.e.map(s=>`<span class="pill">${s}</span>`).join("")}</div></td>
@@ -350,12 +460,12 @@ function render(){
 }
 
 function exportXls(){
-  const rows=filtered().map(x=>({Empresa:x.n,Categoría:x.c,Amenaza:x.a,Origen:x.o,"Talento LatAm":x.la?"Sí":"No",Ciudad:x.ci,Tamaño:SIZE[x.t],
-    Servicios:x.s.join(", "),Especialidades:x.e.join(", "),Posicionamiento:x.d,Web:x.w?"https://"+x.w:"","LinkedIn decisores":liUrl(x)}));
+  const rows=filtered().map(x=>({Empresa:x.n,"No atacable":x.bl==="no"?"🚫 SÍ":x.bl==="ok"?"✅ Atacable de momento":"","Observación no atacable":x.blN&&x.blN.o?x.blN.o:"",Unidad:x.u,Categoría:x.c,Amenaza:x.a,Origen:x.o,"Presencia/talento LatAm":x.la?"Sí":"No",Ciudad:x.ci,Tamaño:SIZE[x.t],
+    Servicios:x.s.join(", "),"Especialidad / segmento":x.e.join(", "),Posicionamiento:x.d,Web:x.w?"https://"+x.w:"","LinkedIn decisores":liUrl(x)}));
   if(typeof XLSX==="undefined"){ // fallback CSV
     const h=Object.keys(rows[0]||{});const csv=[h.join(";")].concat(rows.map(r=>h.map(k=>`"${String(r[k]).replace(/"/g,'""')}"`).join(";"))).join("\n");
     const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["﻿"+csv],{type:"text/csv"}));a.download="competidores-mindata-espana.csv";a.click();return}
-  const ws=XLSX.utils.json_to_sheet(rows);ws["!cols"]=[{wch:30},{wch:26},{wch:9},{wch:13},{wch:12},{wch:18},{wch:20},{wch:40},{wch:36},{wch:70},{wch:30},{wch:40}];
+  const ws=XLSX.utils.json_to_sheet(rows);ws["!cols"]=[{wch:30},{wch:22},{wch:40},{wch:16},{wch:26},{wch:9},{wch:13},{wch:12},{wch:18},{wch:20},{wch:40},{wch:36},{wch:70},{wch:30},{wch:40}];
   const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Competidores");XLSX.writeFile(wb,"competidores-mindata-espana.xlsx");
 }
 

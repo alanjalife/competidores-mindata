@@ -101,6 +101,26 @@ td .pills{max-width:260px}
 .brow{display:grid;grid-template-columns:210px 1fr 28px;align-items:center;gap:10px;font-size:12px}
 .btrack{height:10px;background:#333;border-radius:5px;overflow:hidden}
 .bfill{height:100%;border-radius:5px}
+.btn.sales{background:#fff;color:var(--red);border:2px solid var(--red)}
+.btn.sales.on{background:var(--red);color:#fff}
+.sv-intro{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--red);border-radius:14px;padding:16px 18px;margin-bottom:16px;font-size:13.5px}
+.sv-intro h3{font-size:18px;margin-bottom:6px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:12.5px;color:var(--mute)}
+.lv{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:12px;font-weight:700}
+.lv.c{background:var(--red);color:#fff}.lv.p{background:#fff;border:2px solid var(--red);color:var(--red)}.lv.v{background:#E8E6E2;color:#666}
+.opps{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-bottom:18px}
+.opp{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px;cursor:pointer;transition:.15s}
+.opp:hover{border-color:var(--ink)}.opp.on{border:2px solid var(--red);box-shadow:0 6px 18px rgba(214,47,47,.12)}
+.opp .t{font-weight:700;font-size:15px}.opp .s{font-size:12px;color:var(--mute)}
+.opp .k{display:flex;gap:10px;font-size:12.5px}.opp .k b{font-size:20px}
+.opp .who{display:flex;flex-wrap:wrap;gap:4px}
+.opp .who span{font-size:11px;padding:2px 7px;border-radius:6px;background:var(--bg);border:1px solid var(--line)}
+.opp .who span.c{background:var(--red-soft);border-color:#F2CACA;color:#8E1E1E;font-weight:700}
+.mx td.cell{text-align:center}
+.mx td.cell a{text-decoration:none}
+.mx th.lic{text-align:center;min-width:92px}
+.tip{font-size:11.5px;color:var(--mute);margin-top:3px;max-width:260px}
+.svbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0 14px}
 footer{border-top:1px solid var(--line);padding:22px 0;font-size:12.5px;color:var(--mute)}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .tw{overflow-x:auto}
@@ -164,6 +184,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
             <option value="size">Ordenar: tamaño</option>
             <option value="cat">Ordenar: categoría</option>
           </select>
+          <button class="btn sales" id="salesBtn">💼 Venta Comercial</button>
           <button class="btn red" id="xls">Exportar a Excel</button>
           <div class="seg"><button class="on" data-v="cards">Tarjetas</button><button data-v="table">Tabla</button></div>
         </div>
@@ -303,7 +324,10 @@ const D=[
 {u:"Hospitality Tech",n:"Amadeus Hospitality",c:"Hospitality · Software hotelero",o:"Español",ci:"Madrid",t:"G",s:["SaaS","Integración PMS"],e:["Cadenas hoteleras","Hoteles"],a:"Baja",w:"amadeus-hospitality.com",d:"Software hotelero de Amadeus: CRS, iHotelier, CRM y ventas y eventos, en más de 50.000 propiedades. Es competidor en software y también un posible partner para integraciones."},
 {u:"Staffing IT",n:"Plexus Tech",c:"Consultora IT con outsourcing",o:"Español",ci:"Santiago de Compostela",t:"M",s:["Outsourcing","Staff augmentation","Proyectos"],e:["Desarrollo","Data","Ciberseguridad","SAP / ERP","IA"],a:"Alta",w:"plexus.es",d:"Unos 3.400 profesionales, 24 sedes en España y presencia en México y Miami. Trabaja para casi todo el IBEX35, retail, turoperadores y banca. Ojo: W2M pide no enviar candidatos de Plexus.",la:true},
 {u:"Staffing IT",n:"LIS Data Solutions",c:"Consultora IT con outsourcing",o:"Español",ci:"Vitoria-Gasteiz",t:"P",s:["Proyectos","Outsourcing"],e:["Data","IA"],a:"Baja",w:"lisdatasolutions.com",d:"Consultora de datos e IA para logística e industria, hoy dentro de LIS Global Group. Verificar que sea la ‘Lis Solution’ buscada: también existe LISSOLUTIONS S.L. en Barcelona, de instalaciones eléctricas."},
-{u:"Staffing IT",n:"NEGIT IS",c:"Consultora IT con outsourcing",o:"LatAm",ci:"México",t:"P",s:["Outsourcing","Proyectos"],e:["Sistemas","Cloud","Ciberseguridad","Soporte / Help Desk"],a:"Media",w:"negit-is.mx",d:"Servicios TI para pymes en México: soporte, cloud, firewall y gestión de equipos. Es competidor en el mercado mexicano de Mindata. Verificar."}
+{u:"Staffing IT",n:"NEGIT IS",c:"Consultora IT con outsourcing",o:"LatAm",ci:"México",t:"P",s:["Outsourcing","Proyectos"],e:["Sistemas","Cloud","Ciberseguridad","Soporte / Help Desk"],a:"Media",w:"negit-is.mx",d:"Servicios TI para pymes en México: soporte, cloud, firewall y gestión de equipos. Es competidor en el mercado mexicano de Mindata. Verificar."},
+{u:"Hospitality Tech",n:"bcSistemas",c:"Hospitality · Operadores e integradores",o:"Español",ci:"Sin dato",t:"P",s:["WiFi","VoIP","Llave en mano","Soporte 24/7"],e:["Cadenas hoteleras","Hoteles"],a:"Alta",w:"",d:"Business partner Premium de Alcatel-Lucent. Integró la red del data center de RIU (OmniSwitch 10K) y el WiFi Alcatel en hoteles RIU, incluidos Panamá y México. Es el incumbente en RIU. Verificar la web.",la:true},
+{u:"Staffing IT",n:"ToBeIT",c:"Consultora IT con outsourcing",o:"Español",ci:"Sin dato",t:"P",s:["Proyectos","Outsourcing"],e:["Sistemas","Monitorización"],a:"Media",w:"tobeit.es",d:"Se presenta como partner oficial de Nagios en España: licencias Nagios XI, implantación, desarrollos y soporte y mantenimiento de monitorización."},
+{u:"Staffing IT",n:"Logicalis",c:"Consultora IT con outsourcing",o:"Multinacional",ci:"Madrid",t:"G",s:["Outsourcing","Proyectos"],e:["Cloud","Sistemas","Ciberseguridad"],a:"Media",w:"logicalis.com",d:"Integrador global. Reseller Elite de Pure Storage con autorización mundial y Authorized Support Partner. Ciudad en España: verificar."}
 ];
 
 /* ============ CLIENTES NO ATACABLES ============
@@ -350,9 +374,49 @@ const BL=[
 const blOf=x=>{const nm=" "+x.n.toLowerCase().replace(/[()\/,.-]/g," ")+" ";
   return BL.find(b=>b.k.some(k=>new RegExp("(^|\\s)"+k.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"(\\s|$)").test(nm)))||null};
 
+/* ================= VENTA COMERCIAL =================
+   Oportunidades y competidores que pueden vender cada licencia.
+   Nivel: c = confirmado con fuente pública · p = probable por perfil (integrador de redes / seguridad / sistemas) · v = verificar */
+const LIC=[
+ {id:"FTN",n:"Fortinet",d:"Renovación de licencias Fortinet",cl:"RIU Hotels"},
+ {id:"SOP",n:"Sophos",d:"Renovación de licencias Firewall SOPHOS 2027",cl:"RIU Hotels"},
+ {id:"PUR",n:"Pure Storage",d:"Licencias PureStorage",cl:""},
+ {id:"NAG",n:"Nagios",d:"Licencias Nagios",cl:""},
+ {id:"ALE",n:"Alcatel-Lucent",d:"Licencias Alcatel-Lucent",cl:""},
+ {id:"MNT",n:"Soporte y mantenimiento",d:"Servicio y soporte de mantenimiento de licencias",cl:""}
+];
+const LV={
+ "SCC España":{FTN:["c","Grupo SCC: Expert Partner de Fortinet (máximo nivel) y especialización SD-WAN, con operación en España","https://www.scc.com/partners/fortinet"],SOP:["c","Grupo SCC: Platinum Partner de Sophos desde hace más de 10 años","https://scc.com/partners/sophos"],PUR:["p","SCC France es reseller y Authorized Support Partner de Pure Storage. En España: verificar","https://www.purestorage.com/partners/resellers/scc-france.html"],MNT:["c","Servicios gestionados certificados (provisión, monitorización, administración remota de licencias)",""]},
+ "Telefónica Empresas":{FTN:["c","Alianza estratégica con Fortinet desde 2016. Telefónica Soluciones es partner Gold","https://www.telefonica.com/es/sala-comunicacion/prensa/telefonica-tech-y-fortinet-lanzan-el-servicio-global-secure-sd-wan-para-asegurar-y-conectar-el-trabajo-en-todos-los-entornos/"],PUR:["p","Telefónica Tech UK&I es reseller Elite de Pure. En España: verificar","https://www.purestorage.com/la/partners/resellers/telefonica-tech.html"],SOP:["p","Gran integrador de ciberseguridad",""],ALE:["p","Operador e integrador de comunicaciones",""],MNT:["c","Ganó un concurso público de renovación de licencias y soporte de firewalls (Junta de Andalucía, 2026)","https://ted.europa.eu/en/notice/294750-2026/pdf"]},
+ "Altia":{SOP:["c","Platinum Partner de Sophos","https://www.datacenterdynamics.com/es/noticias/altia-se-convierte-en-platinum-partner-de-sophos-y-ofrecer%C3%A1-sus-soluciones-de-seguridad-en-la-nube/"],FTN:["p","Integrador TIC con práctica de seguridad",""],MNT:["p","Consultoría, desarrollo y mantenimiento",""]},
+ "bcSistemas":{ALE:["c","Business partner Premium de Alcatel-Lucent. Integró el data center y el WiFi de RIU","https://www.datacenterdynamics.com/es/noticias/riu-hotels-resorts-transforma-sus-comunicaciones-con-alcatel-lucent/"],MNT:["p","Relación de soporte continuada con RIU",""],FTN:["v","Sin dato",""]},
+ "ToBeIT":{NAG:["c","Partner oficial de Nagios en España (Nagios XI)","https://tobeit.es/en/nagios-xi-partners/"],MNT:["c","Mantenimiento, soporte y administración de Nagios","https://tobeit.es/en/nagios-xi-partners/"]},
+ "Logicalis":{PUR:["c","Reseller Elite de Pure Storage, Authorized Support Partner, autorizado en todo el mundo","https://www.purestorage.com/es/partners/resellers/logicalis.html"],FTN:["p","Integrador de redes y seguridad",""],MNT:["c","Authorized Support Partner de Pure","https://www.purestorage.com/la/partners/resellers/logicalis.html"]},
+ "Quental":{NAG:["p","Figura en el listado de partners Nagios de España en Elioplus","https://elioplus.com/europe/spain/channel-partners/nagios"],MNT:["p","Servicios gestionados",""]},
+ "IPRoom":{FTN:["p","Operador de redes hoteleras (firewall perimetral habitual)",""],ALE:["p","Centralitas y redes corporativas de hotel",""],MNT:["c","Diseña, instala, mantiene y opera la red del hotel. Tiene instalaciones en RIU","https://www.iproom.net/es/2-uncategorised"]},
+ "Tecnimart (Hitel360)":{FTN:["p","Integrador de telecomunicaciones y seguridad",""],ALE:["p","Integración de comunicaciones de voz y multimedia",""],SOP:["v","Sin dato",""],MNT:["c","Soporte bajo SLA 24x7 para soluciones IT","https://www.hitel360.com/"]},
+ "Cibersuite Networks":{FTN:["p","Redes WiFi y GPON para hoteles",""],MNT:["c","Soporte técnico 24/7 en sus proyectos","https://cibersuite.com/"]},
+ "Cerium":{FTN:["p","Redes y ciberseguridad hotelera (socio ITH)",""],SOP:["p","Ciberseguridad",""],MNT:["p","Gestión de redes",""]},
+ "Intec Cybersecurity":{FTN:["p","SOC/MDR con gestión de perimetral",""],SOP:["p","SOC/MDR con gestión de endpoint y firewall",""],MNT:["p","Servicio gestionado 24/7",""]},
+ "Hotelinking":{FTN:["v","Redes hoteleras con TP-Link Omada; Fortinet sin confirmar",""],MNT:["p","Mantenimiento de redes",""]},
+ "Ricoh España":{PUR:["v","Infraestructura vía IPM, sin dato de Pure",""],MNT:["c","IPM (Ricoh): mantenimiento proactivo 24/7 y servicios gestionados","https://hashicorp.com/de/partners/systems-integrators/ipm"]},
+ "Inetum España":{FTN:["p","Gran integrador",""],SOP:["p","Gran integrador",""],PUR:["p","Infraestructura y cloud",""],MNT:["p","Servicios gestionados",""]},
+ "NTT DATA Spain":{FTN:["p","Gran integrador",""],PUR:["p","Infraestructura",""],MNT:["p","Servicios gestionados",""]},
+ "Minsait (Indra)":{FTN:["p","Ciberseguridad",""],MNT:["p","Servicios gestionados",""]},
+ "Sopra Steria España":{FTN:["p","Ciberseguridad",""],MNT:["p","AMS / servicios gestionados",""]},
+ "Plexus Tech":{FTN:["p","Áreas de sistemas, comunicaciones y ciberseguridad",""],SOP:["p","Ciberseguridad",""],MNT:["p","Servicios de soporte",""]},
+ "SEMIC":{FTN:["p","Integrador TIC con ciberseguridad",""],PUR:["p","Integrador de infraestructura",""],MNT:["p","Servicios gestionados",""]},
+ "Grupo ICA":{FTN:["p","Integrador TIC",""],MNT:["p","Servicios gestionados",""]},
+ "Oxigent Technologies":{FTN:["p","Sistemas y ciberseguridad",""],SOP:["p","Ciberseguridad",""],MNT:["p","Servicios gestionados",""]},
+ "TECDATA":{FTN:["p","Infraestructura propia y sistemas",""],MNT:["p","Soporte",""]},
+ "Grupo Oesía":{FTN:["p","Ciberseguridad",""],MNT:["p","Servicios gestionados",""]},
+ "Televés Hospitality":{MNT:["p","Soporte de su equipamiento hotelero",""]},
+ "Eurona":{MNT:["p","Instala y mantiene la infraestructura WiFi hotelera",""]}
+};
+
 /* ================= LÓGICA ================= */
 const $=s=>document.querySelector(s);
-const st={bl:"",u:"",cat:"",q:"",thr:new Set(),orig:"",city:"",size:"",srv:new Set(),esp:new Set(),latam:false,view:"cards",sort:"thr"};
+const st={mode:"dir",lic:"",onlyC:false,bl:"",u:"",cat:"",q:"",thr:new Set(),orig:"",city:"",size:"",srv:new Set(),esp:new Set(),latam:false,view:"cards",sort:"thr"};
 const THR=["Alta","Media","Baja"],THRo={Alta:0,Media:1,Baja:2},SZo={G:0,M:1,P:2};
 D.forEach(x=>{const b=blOf(x);x.bl=b?(b.ok?"ok":"no"):"";x.blN=b;if(x.la===undefined)x.la=(x.o==="LatAm"||/LatAm|México|Argentina/i.test(x.d))});
 const U=()=>D.filter(x=>!st.u||x.u===st.u);
@@ -407,7 +471,9 @@ function initUI(){
   $("#reset").onclick=()=>{Object.assign(st,{bl:"",u:st.u,cat:"",q:"",orig:"",city:"",size:"",latam:false});st.thr.clear();st.srv.clear();st.esp.clear();
     ["#q","#fOrig","#fCity","#fSize","#fBl"].forEach(s=>$(s).value="");$("#fLatam").checked=false;
     document.querySelectorAll(".opt.on").forEach(o=>o.classList.remove("on"));refreshUnit();render()};
-  $("#xls").onclick=exportXls;
+  $("#xls").onclick=()=>st.mode==="sales"?exportSales():exportXls();
+  $("#salesBtn").onclick=()=>{st.mode=st.mode==="sales"?"dir":"sales";$("#salesBtn").classList.toggle("on",st.mode==="sales");
+    $("#salesBtn").textContent=st.mode==="sales"?"← Volver al directorio":"💼 Venta Comercial";render()};
 }
 
 function filtered(){
@@ -441,6 +507,7 @@ function bars(r){
 
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 function render(){
+  if(st.mode==="sales")return renderSales();
   const r=filtered();$("#nRes").textContent=r.length;bars(r);
   const out=$("#out");
   if(!r.length){out.innerHTML=`<div class="empty">Ningún competidor coincide con estos filtros.</div>`;return}
@@ -465,6 +532,62 @@ function render(){
       <td style="min-width:240px">${esc(x.d)}</td>
       <td style="white-space:nowrap">${x.w?`<a href="https://${x.w}" target="_blank" rel="noopener">Web</a> · `:""}<a href="${liUrl(x)}" target="_blank" rel="noopener">LinkedIn</a></td></tr>`).join("")}</tbody></table></div>`;
   }
+}
+
+const LVL={c:"Confirmado",p:"Probable",v:"Verificar"};
+function salesRows(){
+  const r=filtered().filter(x=>LV[x.n]);
+  let rows=r.map(x=>({x,l:LV[x.n]}));
+  if(st.lic)rows=rows.filter(o=>o.l[st.lic]&&(!st.onlyC||o.l[st.lic][0]==="c"));
+  else if(st.onlyC)rows=rows.filter(o=>Object.values(o.l).some(v=>v[0]==="c"));
+  const sc=o=>Object.values(o.l).reduce((s,v)=>s+(v[0]==="c"?3:v[0]==="p"?1:0),0)+(st.lic&&o.l[st.lic]?(o.l[st.lic][0]==="c"?10:5):0);
+  return rows.sort((a,b)=>sc(b)-sc(a)||a.x.n.localeCompare(b.x.n,'es'));
+}
+function cellHtml(v){
+  if(!v)return '<span style="color:#ccc">—</span>';
+  const sym={c:"✔",p:"~",v:"?"}[v[0]];
+  const b=`<span class="lv ${v[0]}" title="${LVL[v[0]]}: ${esc(v[1])}">${sym}</span>`;
+  return v[2]?`<a href="${v[2]}" target="_blank" rel="noopener" title="${LVL[v[0]]}: ${esc(v[1])}">${b}</a>`:b;
+}
+function renderSales(){
+  const all=filtered().filter(x=>LV[x.n]);
+  $("#nRes").textContent=salesRows().length;
+  const opps=LIC.map(L=>{const w=all.filter(x=>LV[x.n][L.id]&&LV[x.n][L.id][0]!=="v");
+    const c=w.filter(x=>LV[x.n][L.id][0]==="c");const p=w.filter(x=>LV[x.n][L.id][0]==="p");
+    return `<div class="opp${st.lic===L.id?" on":""}" data-l="${L.id}">
+      <div><div class="t">${L.d}</div><div class="s">${L.cl?"Cliente: <b>"+L.cl+"</b> · ":""}Fabricante: ${L.n}</div></div>
+      <div class="k"><span><b style="color:var(--red)">${c.length}</b> confirmados</span><span><b>${p.length}</b> probables</span></div>
+      <div class="who">${c.map(x=>`<span class="c">✔ ${esc(x.n)}</span>`).join("")}${p.slice(0,6).map(x=>`<span>${esc(x.n)}</span>`).join("")}${p.length>6?`<span>+${p.length-6}</span>`:""}</div></div>`}).join("");
+  const rows=salesRows();
+  const riu=`<b>Alerta RIU:</b> bcSistemas es el partner Premium de Alcatel-Lucent que integró el data center y el WiFi de RIU, e IPRoom hizo instalaciones GPON en hoteles RIU (Gran Canaria, Lanzarote). Son los incumbentes más probables en las renovaciones de RIU.`;
+  $("#out").innerHTML=`
+    <div class="sv-intro"><h3>💼 Venta Comercial: quién puede vender estas licencias</h3>
+      Competidores del directorio que son o pueden ser partners de cada fabricante, o que dan soporte y mantenimiento de licencias. Hacé clic en una oportunidad para filtrar. Los filtros de la izquierda (unidad, ciudad, no atacables…) también aplican.
+      <div style="margin-top:8px">${riu}</div>
+      <div class="legend"><span><span class="lv c">✔</span> Confirmado (con fuente, clic para abrir)</span><span><span class="lv p">~</span> Probable por perfil</span><span><span class="lv v">?</span> Verificar</span></div></div>
+    <div class="opps">${opps}</div>
+    <div class="svbar"><label class="opt" style="display:inline-flex;gap:6px;align-items:center"><input type="checkbox" id="onlyC" ${st.onlyC?"checked":""}> Solo confirmados</label>
+      ${st.lic?`<button class="btn ghost" id="clrLic">Ver todas las licencias</button>`:""}
+      <span style="font-size:12.5px;color:var(--mute)">${st.lic?"Filtrando por: <b>"+LIC.find(l=>l.id===st.lic).d+"</b>":""}</span></div>
+    ${rows.length?`<div class="tw"><table class="mx"><thead><tr><th>Empresa</th><th>Unidad / categoría</th>${LIC.map(L=>`<th class="lic">${L.n}</th>`).join("")}<th>Notas</th></tr></thead><tbody>
+    ${rows.map(({x,l})=>`<tr class="${x.bl==="no"?"isbl":""}"><td><b>${x.bl==="no"?"🚫 ":x.bl==="ok"?"✅ ":""}${esc(x.n)}</b><br><span style="font-size:12px;color:var(--mute)">${x.ci} · <span class="thr ${x.a}" style="font-size:10px">${x.a}</span></span></td>
+      <td style="font-size:12px"><b style="color:${col(x.c)}">${x.c}</b><br>${x.u}</td>
+      ${LIC.map(L=>`<td class="cell">${cellHtml(l[L.id])}</td>`).join("")}
+      <td><div class="tip">${LIC.filter(L=>l[L.id]&&l[L.id][0]==="c").map(L=>"<b>"+L.n+":</b> "+esc(l[L.id][1])).join("<br>")||"Sin evidencia confirmada: perfil compatible"}</div></td></tr>`).join("")}
+    </tbody></table></div>`:`<div class="empty">Ningún competidor coincide.</div>`}`;
+  document.querySelectorAll(".opp").forEach(o=>o.onclick=()=>{st.lic=st.lic===o.dataset.l?"":o.dataset.l;renderSales()});
+  const oc=$("#onlyC");if(oc)oc.onchange=e=>{st.onlyC=e.target.checked;renderSales()};
+  const cl=$("#clrLic");if(cl)cl.onclick=()=>{st.lic="";renderSales()};
+  $("#bars").parentElement&&bars(filtered());
+}
+function exportSales(){
+  const rows=salesRows().map(({x,l})=>{const o={Empresa:x.n,"No atacable":x.bl==="no"?"🚫 SÍ":x.bl==="ok"?"✅ De momento":"",Unidad:x.u,Categoría:x.c,Ciudad:x.ci,Amenaza:x.a};
+    LIC.forEach(L=>{o[L.n]=l[L.id]?LVL[l[L.id][0]]:"";o[L.n+" · evidencia"]=l[L.id]?(l[L.id][1]+(l[L.id][2]?" ("+l[L.id][2]+")":"")):""});return o});
+  if(typeof XLSX==="undefined"){const hd=Object.keys(rows[0]||{});const csv=[hd.join(";")].concat(rows.map(r=>hd.map(k=>`"${String(r[k]).replace(/"/g,'""')}"`).join(";"))).join("\n");
+    const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv"}));a.download="venta-comercial-competidores.csv";a.click();return}
+  const ws=XLSX.utils.json_to_sheet(rows),wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Venta Comercial");
+  const ws2=XLSX.utils.json_to_sheet(LIC.map(L=>({Oportunidad:L.d,Cliente:L.cl,Fabricante:L.n})));XLSX.utils.book_append_sheet(wb,ws2,"Oportunidades");
+  XLSX.writeFile(wb,"venta-comercial-competidores.xlsx");
 }
 
 function exportXls(){

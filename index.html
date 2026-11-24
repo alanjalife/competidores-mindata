@@ -118,7 +118,8 @@ td .pills{max-width:260px}
 .opp .who span.c{background:var(--red-soft);border-color:#F2CACA;color:#8E1E1E;font-weight:700}
 .mx td.cell{text-align:center}
 .mx td.cell a{text-decoration:none}
-.mx th.lic{text-align:center;min-width:92px}
+.mx th.lic{text-align:center;min-width:64px;font-size:11px;white-space:normal;line-height:1.2}
+.mx td.cell{padding:8px 4px}
 .tip{font-size:11.5px;color:var(--mute);margin-top:3px;max-width:260px}
 .svbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0 14px}
 footer{border-top:1px solid var(--line);padding:22px 0;font-size:12.5px;color:var(--mute)}
@@ -327,7 +328,13 @@ const D=[
 {u:"Staffing IT",n:"NEGIT IS",c:"Consultora IT con outsourcing",o:"LatAm",ci:"México",t:"P",s:["Outsourcing","Proyectos"],e:["Sistemas","Cloud","Ciberseguridad","Soporte / Help Desk"],a:"Media",w:"negit-is.mx",d:"Servicios TI para pymes en México: soporte, cloud, firewall y gestión de equipos. Es competidor en el mercado mexicano de Mindata. Verificar."},
 {u:"Hospitality Tech",n:"bcSistemas",c:"Hospitality · Operadores e integradores",o:"Español",ci:"Sin dato",t:"P",s:["WiFi","VoIP","Llave en mano","Soporte 24/7"],e:["Cadenas hoteleras","Hoteles"],a:"Alta",w:"",d:"Business partner Premium de Alcatel-Lucent. Integró la red del data center de RIU (OmniSwitch 10K) y el WiFi Alcatel en hoteles RIU, incluidos Panamá y México. Es el incumbente en RIU. Verificar la web.",la:true},
 {u:"Staffing IT",n:"ToBeIT",c:"Consultora IT con outsourcing",o:"Español",ci:"Sin dato",t:"P",s:["Proyectos","Outsourcing"],e:["Sistemas","Monitorización"],a:"Media",w:"tobeit.es",d:"Se presenta como partner oficial de Nagios en España: licencias Nagios XI, implantación, desarrollos y soporte y mantenimiento de monitorización."},
-{u:"Staffing IT",n:"Logicalis",c:"Consultora IT con outsourcing",o:"Multinacional",ci:"Madrid",t:"G",s:["Outsourcing","Proyectos"],e:["Cloud","Sistemas","Ciberseguridad"],a:"Media",w:"logicalis.com",d:"Integrador global. Reseller Elite de Pure Storage con autorización mundial y Authorized Support Partner. Ciudad en España: verificar."}
+{u:"Staffing IT",n:"Logicalis",c:"Consultora IT con outsourcing",o:"Multinacional",ci:"Madrid",t:"G",s:["Outsourcing","Proyectos"],e:["Cloud","Sistemas","Ciberseguridad"],a:"Media",w:"logicalis.com",d:"Integrador global. Reseller Elite de Pure Storage con autorización mundial y Authorized Support Partner. Ciudad en España: verificar."},
+{u:"Staffing IT",n:"SEIDOR",c:"Consultora IT con outsourcing",o:"Español",ci:"Barcelona",t:"G",s:["Outsourcing","Proyectos","Staff augmentation"],e:["SAP / ERP","Cloud","Ciberseguridad","Desarrollo"],a:"Alta",w:"seidor.com",d:"Gran integrador español: SAP, Microsoft (más de 1.000 contratos de licencias), cloud y ciberseguridad. Figura en el listado de no atacables."},
+{u:"Staffing IT",n:"Deiser",c:"Consultora IT con outsourcing",o:"Español",ci:"Madrid",t:"P",s:["Proyectos","Outsourcing"],e:["Atlassian / Jira","ITSM"],a:"Media",w:"deiser.com",d:"Consultora 100 % Atlassian y Platinum Solution Partner. Es el partner Atlassian más antiguo de España (desde 2007)."},
+{u:"Staffing IT",n:"Sngular",c:"Consultora IT con outsourcing",o:"Español",ci:"Madrid",t:"M",s:["Proyectos","Staff augmentation","Outsourcing"],e:["Desarrollo","Atlassian / Jira","Data","IA"],a:"Alta",w:"sngular.com",d:"Consultora tecnológica, matriz de Manfred. Atlassian Platinum Solution Partner Enterprise."},
+{u:"Staffing IT",n:"Izertis",c:"Consultora IT con outsourcing",o:"Español",ci:"Gijón",t:"M",s:["Proyectos","Outsourcing","Staff augmentation"],e:["Desarrollo","Atlassian / Jira","Cloud","Ciberseguridad"],a:"Media",w:"izertis.com",d:"Consultora cotizada con práctica Atlassian (Platinum Solution Partner)."},
+{u:"Staffing IT",n:"redk CRM Solutions",c:"Consultora IT con outsourcing",o:"Español",ci:"Sin dato",t:"P",s:["Proyectos","Staff augmentation"],e:["CRM / CX","Zendesk"],a:"Baja",w:"redk.net",d:"Zendesk Premier Partner: implementación, reselling y staffing/outsourcing. Fue Implementation Partner of the Year 2020."},
+{u:"Staffing IT",n:"Helping",c:"Consultora IT con outsourcing",o:"Español",ci:"Barcelona",t:"P",s:["Proyectos"],e:["CRM / CX","Zendesk"],a:"Baja",w:"helping.es",d:"Zendesk Premier Solution Partner con más de 950 proyectos desde 2008 (Barcelona y Madrid). Verificar la web."}
 ];
 
 /* ============ CLIENTES NO ATACABLES ============
@@ -383,6 +390,16 @@ const LIC=[
  {id:"PUR",n:"Pure Storage",d:"Licencias PureStorage",cl:""},
  {id:"NAG",n:"Nagios",d:"Licencias Nagios",cl:""},
  {id:"ALE",n:"Alcatel-Lucent",d:"Licencias Alcatel-Lucent",cl:""},
+ {id:"MSO",n:"Office",d:"Licencias Office (Microsoft 365)",cl:""},
+ {id:"RUC",n:"Ruckus",d:"Licencias Ruckus",cl:""},
+ {id:"GWS",n:"Google Workspace",d:"Licencias de Google Workspace",cl:""},
+ {id:"PVS",n:"PVsyst 7",d:"Licencia SW PVsyst 7 Profesional",cl:"",w:"El contrato de licencia de PVsyst dice que ningún reseller está autorizado a venderlo: solo se compra en pvsyst.com. Confirmar cómo se factura esta línea."},
+ {id:"RQF",n:"Request Forms",d:"Licencia SW Request Forms",cl:"",w:"No identifiqué un producto único con este nombre. ¿Cuál es el fabricante?"},
+ {id:"VMF",n:"VMware Fusion",d:"Licencia VMware Fusion Pro 13",cl:"",w:"Desde el 11-11-2024 Broadcom ofrece Fusion Pro gratis también para uso comercial. Hoy el valor vendible es el soporte, no la licencia."},
+ {id:"JIR",n:"Jira",d:"Licencias Jira (Atlassian)",cl:""},
+ {id:"MER",n:"Cisco Meraki",d:"Licencias Cisco Meraki",cl:""},
+ {id:"IBM",n:"IBM",d:"Licencias IBM",cl:""},
+ {id:"ZEN",n:"Zendesk",d:"Licencia Zendesk",cl:""},
  {id:"MNT",n:"Soporte y mantenimiento",d:"Servicio y soporte de mantenimiento de licencias",cl:""}
 ];
 const LV={
@@ -413,6 +430,32 @@ const LV={
  "Televés Hospitality":{MNT:["p","Soporte de su equipamiento hotelero",""]},
  "Eurona":{MNT:["p","Instala y mantiene la infraestructura WiFi hotelera",""]}
 };
+
+const LV2={
+ "SCC España":{MER:["c","Grupo SCC: Cisco Gold Provider en servicios gestionados, incluido Meraki","https://www.scc.com/insights/news/scc-news/scc-achieves-cisco-gold-provider-status-for-network-managed-services"],IBM:["c","SCC España: IBM Platinum Business Partner desde hace más de 30 años","https://ibm.com/partnerplus/directory/company/7907"],MSO:["p","Reseller IT generalista",""],VMF:["p","Integrador de infraestructura",""]},
+ "Telefónica Empresas":{MSO:["c","Mejor Partner de Digitalización de la Pyme en los Microsoft Partner Awards España 2025","https://news.microsoft.com/source/emea/features/microsoft-reconoce-a-los-lideres-de-la-innovacion-tecnologica-en-sus-premios-partner-of-the-year-awards-2025/?lang=es"],GWS:["c","Telefónica Tech tiene la especialización Google Workspace para empresas","https://www.telefonica.com/es/sala-comunicacion/prensa/telefonica-google-cloud-amplian-alianza-estrategica"],MER:["c","Servicio flexSITE con WiFi, LAN y seguridad gestionados en la nube de Meraki","https://www.telefonica.com/es/sala-comunicacion/telefonica-tech-y-cisco-se-alian-para-evolucionar-su-oferta-convergente-de-red-y-seguridad/"],IBM:["p","Gran integrador",""]},
+ "Inetum España":{MSO:["c","Microsoft Global Gold Partner y finalista de Partner of the Year España 2025","https://www.inetum.com/fr/en/about-us/partners-alliances/microsoft.html"],GWS:["c","Premier Partner de Google Workspace (servicio y reventa)","https://inetum.com/en/google-alliance"],JIR:["p","Gran integrador",""],MER:["p","Gran integrador",""],IBM:["p","Gran integrador",""]},
+ "Logicalis":{MER:["c","Logicalis Spain: Cisco Preferred Partner en los cinco portfolios","https://es.logicalis.com/perspectivas/noticias/cio-survey-2019"],MSO:["p","Integrador",""],IBM:["p","Integrador",""]},
+ "NTT DATA Spain":{MER:["p","‘NTT’ fue Networking Partner of the Year de Cisco España FY25 (verificar la entidad)","https://www.channelpartner.es/?p=305250"],MSO:["p","Gran integrador",""],IBM:["p","Gran integrador",""],JIR:["p","Gran integrador",""]},
+ "Viewnext (IBM)":{IBM:["c","Filial de IBM en España",""],MNT:["p","Centros de servicio",""]},
+ "Ricoh España":{MSO:["p","Servicios IT y workplace",""],IBM:["p","Vía IPM",""]},
+ "Plexus Tech":{MSO:["p","Integrador",""],JIR:["p","Desarrollo / delivery",""]},
+ "Altia":{MSO:["p","Integrador",""],GWS:["p","Integrador",""]},
+ "Wifirst":{RUC:["c","Aparece como caso y partner en la página de hospitality de RUCKUS","https://ruckusnetworks.com:443/solutions/industries/hospitality"],MNT:["c","WiFi gestionado de extremo a extremo",""]},
+ "IPRoom":{RUC:["p","Instalador de WiFi hotelero",""],MER:["v","Sin dato",""]},
+ "Cibersuite Networks":{RUC:["p","Declara compatibilidad con múltiples fabricantes de hardware",""]},
+ "Hotelinking":{RUC:["p","Redes WiFi hoteleras",""]},
+ "Cerium":{RUC:["p","Redes WiFi hoteleras",""],MER:["p","Redes y ciberseguridad",""]},
+ "Tecnimart (Hitel360)":{RUC:["p","Redes WiFi y hotelería",""],MER:["p","Integrador de networking",""],MSO:["p","Soluciones cloud",""]},
+ "Manfred (Sngular)":{JIR:["p","Su matriz, Sngular, es Atlassian Platinum Solution Partner","https://partners.sngular.com/atlassian/en/"]},
+ "SEIDOR":{MSO:["c","Más de 1.000 contratos Microsoft activos (EA, MPSA, Select Plus, CSP) y más de 400 consultores","https://seidor.com/partners/microsoft"],IBM:["p","Gran integrador",""],MNT:["p","Servicios gestionados",""]},
+ "Deiser":{JIR:["c","Atlassian Platinum Solution Partner en Madrid, el partner más antiguo en España","https://partnerdirectory.atlassian.com/deiser"],MNT:["p","Soporte y servicios gestionados Atlassian",""]},
+ "Sngular":{JIR:["c","Atlassian Platinum Solution Partner Enterprise","https://partners.sngular.com/atlassian/en/"]},
+ "Izertis":{JIR:["c","Figura como Platinum Solution Partner en el directorio de Atlassian","https://partnerdirectory.atlassian.com/es?page=15"]},
+ "redk CRM Solutions":{ZEN:["c","Zendesk Premier Solution e Implementation Partner con servicio de reselling","https://www.zendesk.es/marketplace/partners/2033/"],MNT:["p","Implementación y soporte Zendesk",""]},
+ "Helping":{ZEN:["c","Zendesk Premier Solution Partner con más de 950 proyectos desde 2008","https://www.zendesk.com/au/marketplace/partners/2810/"]}
+};
+Object.entries(LV2).forEach(([k,v])=>{LV[k]=Object.assign(LV[k]||{},v)});
 
 /* ================= LÓGICA ================= */
 const $=s=>document.querySelector(s);
@@ -540,7 +583,7 @@ function salesRows(){
   let rows=r.map(x=>({x,l:LV[x.n]}));
   if(st.lic)rows=rows.filter(o=>o.l[st.lic]&&(!st.onlyC||o.l[st.lic][0]==="c"));
   else if(st.onlyC)rows=rows.filter(o=>Object.values(o.l).some(v=>v[0]==="c"));
-  const sc=o=>Object.values(o.l).reduce((s,v)=>s+(v[0]==="c"?3:v[0]==="p"?1:0),0)+(st.lic&&o.l[st.lic]?(o.l[st.lic][0]==="c"?10:5):0);
+  const sc=o=>Object.values(o.l).reduce((s,v)=>s+(v[0]==="c"?3:v[0]==="p"?1:0),0)+(st.lic&&o.l[st.lic]?(o.l[st.lic][0]==="c"?200:o.l[st.lic][0]==="p"?100:0):0);
   return rows.sort((a,b)=>sc(b)-sc(a)||a.x.n.localeCompare(b.x.n,'es'));
 }
 function cellHtml(v){
@@ -556,6 +599,7 @@ function renderSales(){
     const c=w.filter(x=>LV[x.n][L.id][0]==="c");const p=w.filter(x=>LV[x.n][L.id][0]==="p");
     return `<div class="opp${st.lic===L.id?" on":""}" data-l="${L.id}">
       <div><div class="t">${L.d}</div><div class="s">${L.cl?"Cliente: <b>"+L.cl+"</b> · ":""}Fabricante: ${L.n}</div></div>
+      ${L.w?`<div style="font-size:12px;background:#FFF4DE;color:#7A4E00;border-radius:8px;padding:6px 9px">⚠️ ${L.w}</div>`:""}
       <div class="k"><span><b style="color:var(--red)">${c.length}</b> confirmados</span><span><b>${p.length}</b> probables</span></div>
       <div class="who">${c.map(x=>`<span class="c">✔ ${esc(x.n)}</span>`).join("")}${p.slice(0,6).map(x=>`<span>${esc(x.n)}</span>`).join("")}${p.length>6?`<span>+${p.length-6}</span>`:""}</div></div>`}).join("");
   const rows=salesRows();
@@ -586,7 +630,7 @@ function exportSales(){
   if(typeof XLSX==="undefined"){const hd=Object.keys(rows[0]||{});const csv=[hd.join(";")].concat(rows.map(r=>hd.map(k=>`"${String(r[k]).replace(/"/g,'""')}"`).join(";"))).join("\n");
     const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv"}));a.download="venta-comercial-competidores.csv";a.click();return}
   const ws=XLSX.utils.json_to_sheet(rows),wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Venta Comercial");
-  const ws2=XLSX.utils.json_to_sheet(LIC.map(L=>({Oportunidad:L.d,Cliente:L.cl,Fabricante:L.n})));XLSX.utils.book_append_sheet(wb,ws2,"Oportunidades");
+  const ws2=XLSX.utils.json_to_sheet(LIC.map(L=>({Oportunidad:L.d,Cliente:L.cl,Fabricante:L.n,Aviso:L.w||""})));XLSX.utils.book_append_sheet(wb,ws2,"Oportunidades");
   XLSX.writeFile(wb,"venta-comercial-competidores.xlsx");
 }
 
